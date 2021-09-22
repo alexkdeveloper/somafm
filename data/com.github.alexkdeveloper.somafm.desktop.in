@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=SomaFM
+Comment=Simple Radio
+Exec=com.github.alexkdeveloper.somafm %U
+Icon=com.github.alexkdeveloper.somafm
+Terminal=false
+Categories=Audio;Music;Player;AudioVideo;GNOME;GTK;
+Keywords=Radio;Audio;Music;Player;
