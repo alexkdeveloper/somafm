@@ -1,4 +1,4 @@
-# Raddiola 
+# SomaFM
 
 ![screenshot.png](/data/screenshot.png)
 
