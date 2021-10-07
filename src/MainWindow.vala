@@ -29,7 +29,7 @@ private int mode;
 
         public MainWindow(Gtk.Application application) {
             GLib.Object(application: application,
-                         title: "SomaFM",
+                         title: "Soma Radio",
                          window_position: WindowPosition.CENTER,
                          resizable: true,
                          height_request: 500,
@@ -43,25 +43,25 @@ private int mode;
         headerbar.show_close_button = true;
         set_titlebar(headerbar);
         back_button = new Gtk.Button ();
-            back_button.set_image (new Gtk.Image.from_icon_name ("go-previous", Gtk.IconSize.SMALL_TOOLBAR));
+            back_button.set_image (new Gtk.Image.from_icon_name ("go-previous-symbolic", Gtk.IconSize.SMALL_TOOLBAR));
             back_button.vexpand = false;
         add_button = new Gtk.Button ();
-            add_button.set_image (new Gtk.Image.from_icon_name ("list-add", Gtk.IconSize.SMALL_TOOLBAR));
+            add_button.set_image (new Gtk.Image.from_icon_name ("list-add-symbolic", Gtk.IconSize.SMALL_TOOLBAR));
             add_button.vexpand = false;
         delete_button = new Gtk.Button ();
-            delete_button.set_image (new Gtk.Image.from_icon_name ("list-remove", Gtk.IconSize.SMALL_TOOLBAR));
+            delete_button.set_image (new Gtk.Image.from_icon_name ("list-remove-symbolic", Gtk.IconSize.SMALL_TOOLBAR));
             delete_button.vexpand = false;
         edit_button = new Gtk.Button ();
-            edit_button.set_image (new Gtk.Image.from_icon_name ("edit", Gtk.IconSize.SMALL_TOOLBAR));
+            edit_button.set_image (new Gtk.Image.from_icon_name ("document-edit-symbolic", Gtk.IconSize.SMALL_TOOLBAR));
             edit_button.vexpand = false;
         start_browser_button = new Gtk.Button ();
-            start_browser_button.set_image (new Gtk.Image.from_icon_name ("emblem-web", Gtk.IconSize.SMALL_TOOLBAR));
+            start_browser_button.set_image (new Gtk.Image.from_icon_name ("web-browser-symbolic", Gtk.IconSize.SMALL_TOOLBAR));
             start_browser_button.vexpand = false;
         play_button = new Gtk.Button();
-            play_button.set_image (new Gtk.Image.from_icon_name ("media-playback-start", Gtk.IconSize.SMALL_TOOLBAR));
+            play_button.set_image (new Gtk.Image.from_icon_name ("media-playback-start-symbolic", Gtk.IconSize.SMALL_TOOLBAR));
             play_button.vexpand = false;
         stop_button = new Gtk.Button();
-            stop_button.set_image (new Gtk.Image.from_icon_name ("media-playback-stop", Gtk.IconSize.SMALL_TOOLBAR));
+            stop_button.set_image (new Gtk.Image.from_icon_name ("media-playback-stop-symbolic", Gtk.IconSize.SMALL_TOOLBAR));
             stop_button.vexpand = false;
         back_button.set_tooltip_text("back");
         add_button.set_tooltip_text("add station");
@@ -140,7 +140,7 @@ private int mode;
         stack.add(vbox_edit_page);
         stack.visible_child = vbox_player_page;
         player = ElementFactory.make ("playbin", "play");
-   directory_path = Environment.get_user_data_dir()+"/.stations_for_radio_app";
+   directory_path = Environment.get_user_data_dir()+"/stations_for_soma_radio";
    GLib.File file = GLib.File.new_for_path(directory_path);
    if(!file.query_exists()){
      try{
