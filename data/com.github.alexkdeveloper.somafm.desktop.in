@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type=Application
-Name=SomaFM
+Name=Soma Radio
 Comment=Simple Radio
 Exec=com.github.alexkdeveloper.somafm %U
 Icon=com.github.alexkdeveloper.somafm

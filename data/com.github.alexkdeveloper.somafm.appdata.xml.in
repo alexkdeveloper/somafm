@@ -4,7 +4,7 @@
   <id>com.github.alexkdeveloper.somafm</id>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-3.0+</project_license>
-  <name>SomaFM</name>
+  <name>Soma Radio</name>
   <summary>A simple radio with built-in stations from the website somafm.com</summary>
   <provides>
     <binary>com.github.alexkdeveloper.somafm</binary>
@@ -55,6 +55,6 @@
     <content_attribute id="money-gambling">none</content_attribute>
   </content_rating>
   <releases>
-    <release version="1.0.0" date="2021-09-22"/>
+    <release version="1.0.0" date="2021-10-07"/>
   </releases>
 </component>
