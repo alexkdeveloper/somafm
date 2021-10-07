@@ -3,7 +3,7 @@
   "runtime": "org.gnome.Platform",
   "runtime-version": "41",
   "sdk": "org.gnome.Sdk",
-  "command": "com.github.alexkdeveloper.somafm",
+  "command": "somafm",
   "finish-args": [
      "--share=ipc",
      "--share=network",
@@ -29,8 +29,8 @@
         "buildsystem": "meson",
         "sources": [
             {
-                "type": "dir",
-                "path": "."
+                "type" : "git",
+                "url" : "https://github.com/alexkdeveloper/somafm.git"
             }
         ]
       }
