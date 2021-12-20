@@ -55,6 +55,19 @@
     <content_attribute id="money-gambling">none</content_attribute>
   </content_rating>
   <releases>
-    <release version="1.0.0" date="2021-10-07"/>
+    <release version="1.0.1" date="2021-12-20">
+   <description>
+    <ul>
+     <li>Added automatic focus setting for input fields after clearing them.</li>
+    </ul>
+ </description>
+</release>
+    <release version="1.0.0" date="2021-10-07">
+    <description>
+      <ul>
+        <li>Initial release</li>
+      </ul>
+    </description>
+    </release>
   </releases>
 </component>
