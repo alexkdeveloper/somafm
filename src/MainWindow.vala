@@ -112,6 +112,7 @@ private int mode;
         entry_name.icon_press.connect ((pos, event) => {
         if (pos == Gtk.EntryIconPosition.SECONDARY) {
               entry_name.set_text("");
+              entry_name.grab_focus();
            }
         });
         var label_name = new Label.with_mnemonic ("_Name:");
@@ -124,6 +125,7 @@ private int mode;
         entry_url.icon_press.connect ((pos, event) => {
         if (pos == Gtk.EntryIconPosition.SECONDARY) {
               entry_url.set_text("");
+              entry_url.grab_focus();
            }
         });
         var label_url = new Label.with_mnemonic ("_URL:");
