@@ -7,3 +7,4 @@ Icon=com.github.alexkdeveloper.somafm
 Terminal=false
 Categories=Audio;Music;Player;AudioVideo;GNOME;GTK;
 Keywords=Radio;Audio;Music;Player;
+X-Purism-FormFactor=Workstation;Mobile;
