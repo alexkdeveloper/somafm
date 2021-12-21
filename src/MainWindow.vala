@@ -33,7 +33,6 @@ private int mode;
                          window_position: WindowPosition.CENTER,
                          resizable: true,
                          height_request: 500,
-                         width_request: 500,
                          border_width: 10);
         }
 
