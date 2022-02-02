@@ -1,0 +1,21 @@
+on:
+  push:
+    branches: [master]
+  pull_request:
+name: Flatpak
+jobs:
+  flatpak:
+    name: Build flatpak
+    runs-on: ubuntu-latest
+    container:
+      image: bilelmoussaoui/flatpak-github-actions:gnome-41
+      options: --privileged
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        submodules: recursive
+    - uses: bilelmoussaoui/flatpak-github-actions/flatpak-builder@v3
+      with:
+        bundle: SomaFM.flatpak
+        manifest-path: com.github.alexkdeveloper.somafm.json
+        cache-key: flatpak-builder-${{ github.sha }}
