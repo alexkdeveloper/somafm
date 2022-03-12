@@ -13,12 +13,17 @@ add_project_arguments (
     '-DGETTEXT_PACKAGE="@0@"'.format (meson.project_name ()),
     language: 'c'
 )
-
+add_project_arguments(
+    ['--vapidir', meson.current_source_dir() / 'vapi'],
+    language: 'vala'
+)
 # Listing dependencies
 dependencies = [
     dependency ('glib-2.0'),
     dependency ('gtk+-3.0'),
-    dependency ('gstreamer-1.0')
+    dependency ('gstreamer-1.0'),
+    dependency('libpulse'),
+    dependency('libpulse-mainloop-glib')
 ]
 
 subdir ('src')
