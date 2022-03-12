@@ -13,6 +13,7 @@
   <url type="homepage">http://github.com/alexkdeveloper/somafm</url>
   <url type="bugtracker">http://github.com/alexkdeveloper/somafm/issues</url>
   <url type="help">http://github.com/alexkdeveloper/somafm/issues</url>
+  <url type="donation">https://www.blockchain.com/btc/address/bc1ql3ga4w9jtmxfe3pt8vfzydfd3zfpzks8hu5qfu</url>
   <screenshots>
     <screenshot type="default">
     <image>https://raw.githubusercontent.com/alexkdeveloper/somafm/main/data/screenshot.png</image>
@@ -55,7 +56,14 @@
     <content_attribute id="money-gambling">none</content_attribute>
   </content_rating>
   <releases>
-    <release version="1.0.1" date="2021-12-20">
+  <release version="1.1.0" date="2022-03-12">
+   <description>
+    <ul>
+     <li>Added the ability to record stations in an mp3 file.</li>
+    </ul>
+ </description>
+</release>
+  <release version="1.0.1" date="2021-12-20">
    <description>
     <ul>
      <li>Added automatic focus setting for input fields after clearing them.</li>
