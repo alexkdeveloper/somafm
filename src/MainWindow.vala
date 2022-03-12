@@ -22,7 +22,10 @@ private Button edit_button;
 private Button start_browser_button;
 private Button play_button;
 private Button stop_button;
+private Button record_button;
+private Button stop_record_button;
 private Label current_station;
+private Recorder recorder;
 private string directory_path;
 private string item;
 private int mode;
@@ -62,18 +65,33 @@ private int mode;
         stop_button = new Gtk.Button();
             stop_button.set_image (new Gtk.Image.from_icon_name ("media-playback-stop-symbolic", Gtk.IconSize.SMALL_TOOLBAR));
             stop_button.vexpand = false;
-        back_button.set_tooltip_text("back");
-        add_button.set_tooltip_text("add station");
-        delete_button.set_tooltip_text("delete station");
-        edit_button.set_tooltip_text("edit station");
-        start_browser_button.set_tooltip_text("go to the website somafm.com");
-        play_button.set_tooltip_text("play");
-        stop_button.set_tooltip_text("stop");
+        record_button = new Gtk.Button();
+            record_button.set_image (new Gtk.Image.from_icon_name ("media-record-symbolic", Gtk.IconSize.SMALL_TOOLBAR));
+            record_button.vexpand = false;
+        stop_record_button = new Gtk.Button();
+            stop_record_button.set_image (new Gtk.Image.from_icon_name ("process-stop-symbolic", Gtk.IconSize.SMALL_TOOLBAR));
+            stop_record_button.vexpand = false;
+        var open_directory_button = new Gtk.Button();
+            open_directory_button.set_image (new Gtk.Image.from_icon_name ("folder-open-symbolic", Gtk.IconSize.SMALL_TOOLBAR));
+            open_directory_button.vexpand = false;
+        back_button.set_tooltip_text("Back");
+        add_button.set_tooltip_text("Add station");
+        delete_button.set_tooltip_text("Delete station");
+        edit_button.set_tooltip_text("Edit station");
+        start_browser_button.set_tooltip_text("Go to the website somafm.com");
+        play_button.set_tooltip_text("Play");
+        stop_button.set_tooltip_text("Stop");
+        record_button.set_tooltip_text("Start recording");
+        stop_record_button.set_tooltip_text("Stop recording");
+        open_directory_button.set_tooltip_text("Open the Records folder");
         back_button.clicked.connect(on_back_clicked);
         add_button.clicked.connect(on_add_clicked);
         delete_button.clicked.connect(on_delete_dialog);
         edit_button.clicked.connect(on_edit_clicked);
         start_browser_button.clicked.connect(on_start_browser_clicked);
+        record_button.clicked.connect(on_record_clicked);
+        stop_record_button.clicked.connect(on_stop_record_clicked);
+        open_directory_button.clicked.connect(on_open_directory_clicked);
         play_button.clicked.connect(on_play_station);
         stop_button.clicked.connect(on_stop_station);
         headerbar.pack_start(back_button);
@@ -81,9 +99,13 @@ private int mode;
         headerbar.pack_start(delete_button);
         headerbar.pack_start(edit_button);
         headerbar.pack_start(start_browser_button);
+        headerbar.pack_end(open_directory_button);
+        headerbar.pack_end(record_button);
+        headerbar.pack_end(stop_record_button);
         headerbar.pack_end(stop_button);
         headerbar.pack_end(play_button);
         set_widget_visible(back_button,false);
+        set_widget_visible(stop_record_button, false);
         set_widget_visible(stop_button,false);
           stack = new Stack();
           stack.set_transition_duration (600);
@@ -152,36 +174,69 @@ private int mode;
      create_default_stations();
    }
    show_stations();
+   recorder = Recorder.get_default ();
+   record_button.set_sensitive(false);
  }
 
-   private void on_play_station(){
-         var selection = tree_view.get_selection();
-           selection.set_mode(SelectionMode.SINGLE);
-           TreeModel model;
-           TreeIter iter;
-           if (!selection.get_selected(out model, out iter)) {
-               alert("Choose a station");
-               return;
-           }
-      string uri;
-        try {
-            FileUtils.get_contents (directory_path+"/"+item, out uri);
-        } catch (Error e) {
-            stderr.printf ("Error: %s\n", e.message);
-        }
-      player.uri = uri;
-      player.set_state (State.PLAYING);
-      current_station.set_text("Now playing: "+item);
-      set_widget_visible(play_button,false);
-      set_widget_visible(stop_button,true);
+ private void on_play_station(){
+    var selection = tree_view.get_selection();
+      selection.set_mode(SelectionMode.SINGLE);
+      TreeModel model;
+      TreeIter iter;
+      if (!selection.get_selected(out model, out iter)) {
+          alert(_("Please choose a station"));
+          return;
+      }
+ string uri;
+   try {
+       FileUtils.get_contents (directory_path+"/"+item, out uri);
+   } catch (Error e) {
+       alert(e.message);
+       return;
    }
+ player.uri = uri;
+ player.set_state (State.PLAYING);
+ current_station.set_text("Now playing: "+item);
+ set_widget_visible(play_button,false);
+ set_widget_visible(stop_button,true);
+ record_button.set_sensitive(true);
+}
 
-   private void on_stop_station(){
-      player.set_state (State.READY);
-      current_station.set_text("Stopped");
-      set_widget_visible(play_button,true);
-      set_widget_visible(stop_button,false);
-   }
+private void on_stop_station(){
+ player.set_state (State.READY);
+ current_station.set_text("Stopped");
+ set_widget_visible(play_button,true);
+ set_widget_visible(stop_button,false);
+ if(recorder.is_recording){
+     on_stop_record_clicked();
+ }
+ record_button.set_sensitive(false);
+}
+
+private void on_record_clicked(){
+var selection = tree_view.get_selection();
+selection.set_mode(SelectionMode.SINGLE);
+TreeModel model;
+TreeIter iter;
+if (!selection.get_selected(out model, out iter)) {
+   alert(_("Please choose a station"));
+   return;
+}
+try {
+   recorder.start_recording();
+ } catch (Gst.ParseError e) {
+    alert(e.message);
+    return;
+ }
+ set_widget_visible(record_button,false);
+ set_widget_visible(stop_record_button,true);
+}
+
+private void on_stop_record_clicked(){
+   recorder.stop_recording();
+   set_widget_visible(record_button,true);
+   set_widget_visible(stop_record_button,false);
+}
 
    private void on_start_browser_clicked(){
        var start_browser_dialog = new Gtk.MessageDialog(this, Gtk.DialogFlags.MODAL,Gtk.MessageType.QUESTION, Gtk.ButtonsType.OK_CANCEL, "Do you want to visit the website somafm.com?");
@@ -196,6 +251,14 @@ private int mode;
        }
      }
    }
+   
+   private void on_open_directory_clicked(){
+    try {
+      Gtk.show_uri_on_window(this, "file://"+Environment.get_user_data_dir(), Gdk.CURRENT_TIME);
+    } catch (Error e) {
+        alert(e.message);
+    }      
+  }  
 
    private void on_select_item () {
            var selection = tree_view.get_selection();
@@ -209,6 +272,7 @@ private int mode;
            var index = int.parse(path.to_string());
            if (index >= 0) {
                item = list.nth_data(index);
+               recorder.station_name = item;
            }
        }
 
