@@ -74,16 +74,16 @@ private int mode;
         var open_directory_button = new Gtk.Button();
             open_directory_button.set_image (new Gtk.Image.from_icon_name ("folder-open-symbolic", Gtk.IconSize.SMALL_TOOLBAR));
             open_directory_button.vexpand = false;
-        back_button.set_tooltip_text("Back");
-        add_button.set_tooltip_text("Add station");
-        delete_button.set_tooltip_text("Delete station");
-        edit_button.set_tooltip_text("Edit station");
-        start_browser_button.set_tooltip_text("Go to the website somafm.com");
-        play_button.set_tooltip_text("Play");
-        stop_button.set_tooltip_text("Stop");
-        record_button.set_tooltip_text("Start recording");
-        stop_record_button.set_tooltip_text("Stop recording");
-        open_directory_button.set_tooltip_text("Open the Records folder");
+        back_button.set_tooltip_text(_("Back"));
+        add_button.set_tooltip_text(_("Add station"));
+        delete_button.set_tooltip_text(_("Delete station"));
+        edit_button.set_tooltip_text(_("Edit station"));
+        start_browser_button.set_tooltip_text(_("Go to the website somafm.com"));
+        play_button.set_tooltip_text(_("Play"));
+        stop_button.set_tooltip_text(_("Stop"));
+        record_button.set_tooltip_text(_("Start recording"));
+        stop_record_button.set_tooltip_text(_("Stop recording"));
+        open_directory_button.set_tooltip_text(_("Open the Records folder"));
         back_button.clicked.connect(on_back_clicked);
         add_button.clicked.connect(on_add_clicked);
         delete_button.clicked.connect(on_delete_dialog);
@@ -123,7 +123,7 @@ private int mode;
    var scroll = new ScrolledWindow (null, null);
         scroll.set_policy (PolicyType.AUTOMATIC, PolicyType.AUTOMATIC);
         scroll.add (this.tree_view);
-        current_station = new Label("Welcome!");
+        current_station = new Label(_("Welcome!"));
    vbox_player_page = new Box(Orientation.VERTICAL,10);
    vbox_player_page.pack_start(current_station, false, true, 0);
    vbox_player_page.pack_start(scroll,true,true,0);
@@ -136,7 +136,7 @@ private int mode;
               entry_name.grab_focus();
            }
         });
-        var label_name = new Label.with_mnemonic ("_Name:");
+        var label_name = new Label.with_mnemonic (_("_Name:"));
         label_name.set_xalign(0);
         var vbox_name = new Box (Orientation.VERTICAL, 5);
         vbox_name.pack_start (label_name, false, true, 0);
@@ -196,7 +196,7 @@ private int mode;
    }
  player.uri = uri;
  player.set_state (State.PLAYING);
- current_station.set_text("Now playing: "+item);
+ current_station.set_text(_("Now playing: ")+item);
  set_widget_visible(play_button,false);
  set_widget_visible(stop_button,true);
  record_button.set_sensitive(true);
@@ -204,7 +204,7 @@ private int mode;
 
 private void on_stop_station(){
  player.set_state (State.READY);
- current_station.set_text("Stopped");
+ current_station.set_text(_("Stopped"));
  set_widget_visible(play_button,true);
  set_widget_visible(stop_button,false);
  if(recorder.is_recording){
@@ -239,8 +239,8 @@ private void on_stop_record_clicked(){
 }
 
    private void on_start_browser_clicked(){
-       var start_browser_dialog = new Gtk.MessageDialog(this, Gtk.DialogFlags.MODAL,Gtk.MessageType.QUESTION, Gtk.ButtonsType.OK_CANCEL, "Do you want to visit the website somafm.com?");
-       start_browser_dialog.set_title("Question");
+       var start_browser_dialog = new Gtk.MessageDialog(this, Gtk.DialogFlags.MODAL,Gtk.MessageType.QUESTION, Gtk.ButtonsType.OK_CANCEL, _("Do you want to visit the website somafm.com?"));
+       start_browser_dialog.set_title(_("Question"));
        Gtk.ResponseType result = (ResponseType)start_browser_dialog.run ();
        start_browser_dialog.destroy();
        if(result==Gtk.ResponseType.OK){
@@ -294,7 +294,7 @@ private void on_stop_record_clicked(){
            TreeModel model;
            TreeIter iter;
            if (!selection.get_selected(out model, out iter)) {
-               alert("Choose a station");
+               alert(_("Choose a station"));
                return;
            }
         stack.visible_child = vbox_edit_page;
@@ -312,12 +312,12 @@ private void on_stop_record_clicked(){
 
    private void on_ok_clicked(){
          if(is_empty(entry_name.get_text())){
-		    alert("Enter the name");
+		    alert(_("Enter the name"));
                     entry_name.grab_focus();
                     return;
 		}
 		if(is_empty(entry_url.get_text())){
-		   alert("Enter the url");
+		   alert(_("Enter the url"));
                    entry_url.grab_focus();
                    return;
 		}
@@ -328,7 +328,7 @@ private void on_stop_record_clicked(){
 		if (select_file.get_basename() != edit_file.get_basename() && !edit_file.query_exists()){
                 FileUtils.rename(select_file.get_path(), edit_file.get_path());
                 if(!edit_file.query_exists()){
-                    alert("Rename failed");
+                    alert(_("Rename failed"));
                     return;
                 }
                 try {
@@ -338,7 +338,7 @@ private void on_stop_record_clicked(){
             }
             }else{
                 if (select_file.get_basename() != edit_file.get_basename()) {
-                    alert("A station with the same name already exists");
+                    alert(_("A station with the same name already exists"));
                     entry_name.grab_focus();
                     return;
                 }
@@ -353,7 +353,7 @@ private void on_stop_record_clicked(){
             case 1:
 	GLib.File file = GLib.File.new_for_path(directory_path+"/"+entry_name.get_text().strip());
         if(file.query_exists()){
-            alert("A station with the same name already exists");
+            alert(_("A station with the same name already exists"));
             entry_name.grab_focus();
             return;
         }
@@ -363,7 +363,7 @@ private void on_stop_record_clicked(){
             stderr.printf ("Error: %s\n", e.message);
         }
         if(!file.query_exists()){
-           alert("Add failed");
+           alert(_("Add failed"));
            return;
         }else{
            show_stations();
@@ -384,18 +384,18 @@ private void on_stop_record_clicked(){
            TreeModel model;
            TreeIter iter;
            if (!selection.get_selected(out model, out iter)) {
-               alert("Choose a station");
+               alert(_("Choose a station"));
                return;
            }
            GLib.File file = GLib.File.new_for_path(directory_path+"/"+item);
-         var delete_station_dialog = new Gtk.MessageDialog(this, Gtk.DialogFlags.MODAL,Gtk.MessageType.QUESTION, Gtk.ButtonsType.OK_CANCEL, "Delete station "+file.get_basename()+" ?");
-         delete_station_dialog.set_title("Question");
+         var delete_station_dialog = new Gtk.MessageDialog(this, Gtk.DialogFlags.MODAL,Gtk.MessageType.QUESTION, Gtk.ButtonsType.OK_CANCEL, _("Delete station ")+file.get_basename()+"?");
+         delete_station_dialog.set_title(_("Question"));
          Gtk.ResponseType result = (ResponseType)delete_station_dialog.run ();
          delete_station_dialog.destroy();
          if(result==Gtk.ResponseType.OK){
          FileUtils.remove (directory_path+"/"+item);
          if(file.query_exists()){
-            alert("Delete failed");
+            alert(_("Delete failed"));
          }else{
              show_stations();
          }
@@ -462,7 +462,7 @@ private void on_stop_record_clicked(){
    }
    private void alert (string str){
           var dialog_alert = new Gtk.MessageDialog(this, Gtk.DialogFlags.MODAL, Gtk.MessageType.INFO, Gtk.ButtonsType.OK, str);
-          dialog_alert.set_title("Message");
+          dialog_alert.set_title(_("Message"));
           dialog_alert.run();
           dialog_alert.destroy();
        }
