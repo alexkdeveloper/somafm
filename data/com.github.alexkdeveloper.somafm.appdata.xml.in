@@ -20,42 +20,21 @@
     </screenshot>
   </screenshots>
   <description>
-    <p>A simple radio with a clear and concise interface. You can listen to your favorite stations, add new ones, edit existing ones and delete unnecessary ones. 38 stations from the site somafm.com already embedded in the application.</p>
+    <p>A simple radio with a clear and concise interface. You can listen to your favorite stations, add new ones, edit existing ones and delete unnecessary ones. 38 stations from the site somafm.com already embedded in the application. You can record radio stations to an mp3 file.</p>
   </description>
   <categories>
     <category>GTK</category>
     <category>Multimedia</category>
   </categories>
-  <content_rating type="oars-1.1">
-    <content_attribute id="violence-cartoon">none</content_attribute>
-    <content_attribute id="violence-fantasy">none</content_attribute>
-    <content_attribute id="violence-realistic">none</content_attribute>
-    <content_attribute id="violence-bloodshed">none</content_attribute>
-    <content_attribute id="violence-sexual">none</content_attribute>
-    <content_attribute id="violence-desecration">none</content_attribute>
-    <content_attribute id="violence-slavery">none</content_attribute>
-    <content_attribute id="violence-worship">none</content_attribute>
-    <content_attribute id="drugs-alcohol">none</content_attribute>
-    <content_attribute id="drugs-narcotics">none</content_attribute>
-    <content_attribute id="drugs-tobacco">none</content_attribute>
-    <content_attribute id="sex-nudity">none</content_attribute>
-    <content_attribute id="sex-themes">none</content_attribute>
-    <content_attribute id="sex-homosexuality">none</content_attribute>
-    <content_attribute id="sex-prostitution">none</content_attribute>
-    <content_attribute id="sex-adultery">none</content_attribute>
-    <content_attribute id="sex-appearance">none</content_attribute>
-    <content_attribute id="language-profanity">none</content_attribute>
-    <content_attribute id="language-humor">none</content_attribute>
-    <content_attribute id="language-discrimination">none</content_attribute>
-    <content_attribute id="social-chat">none</content_attribute>
-    <content_attribute id="social-info">none</content_attribute>
-    <content_attribute id="social-audio">none</content_attribute>
-    <content_attribute id="social-location">none</content_attribute>
-    <content_attribute id="social-contacts">none</content_attribute>
-    <content_attribute id="money-purchasing">none</content_attribute>
-    <content_attribute id="money-gambling">none</content_attribute>
-  </content_rating>
+  <content_rating type="oars-1.1"/>
   <releases>
+  <release version="1.1.1" date="2022-04-06">
+   <description>
+    <ul>
+     <li>Added Russian translation</li>
+    </ul>
+ </description>
+</release>
   <release version="1.1.0" date="2022-03-12">
    <description>
     <ul>
