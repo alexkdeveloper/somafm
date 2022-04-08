@@ -11,7 +11,7 @@ apps:
     command: usr/bin/com.github.alexkdeveloper.somafm
     extensions: [gnome-3-38]
     plugs:
-      - home
+      - pulseaudio
     slots:
       - dbus-daemon
     common-id: com.github.alexkdeveloper.somafm
