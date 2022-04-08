@@ -12,6 +12,7 @@ apps:
     extensions: [gnome-3-38]
     plugs:
       - pulseaudio
+      - network
     slots:
       - dbus-daemon
     common-id: com.github.alexkdeveloper.somafm
