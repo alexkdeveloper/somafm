@@ -5,6 +5,7 @@
   "sdk": "org.gnome.Sdk",
   "command": "com.github.alexkdeveloper.somafm",
   "finish-args": [
+     "--device=dri",
      "--share=ipc",
      "--share=network",
      "--socket=fallback-x11",
