@@ -15,7 +15,7 @@ namespace SomaFM {
             }
 
             app_window = new MainWindow(this);
-            app_window.show_all();
+            app_window.show();
         }
 
         public static int main(string[] args) {
