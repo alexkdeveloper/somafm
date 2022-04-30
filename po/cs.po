@@ -1,0 +1,120 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2022-04-06 16:55+0800\n"
+"PO-Revision-Date: 2022-04-06 16:57+0800\n"
+"Last-Translator: vikdevelop\n"
+"Language-Team: Czech\n"
+"Language: cs\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+"X-Generator: Poedit 3.0.1\n"
+"X-Poedit-Basepath: ../src\n"
+"X-Poedit-SearchPath-0: MainWindow.vala\n"
+
+#: MainWindow.vala:77
+msgid "Back"
+msgstr "Zpět"
+
+#: MainWindow.vala:78
+msgid "Add station"
+msgstr "Přidat stanici"
+
+#: MainWindow.vala:79
+msgid "Delete station"
+msgstr "Odstranit stanici"
+
+#: MainWindow.vala:80
+msgid "Edit station"
+msgstr "Upravit stanici"
+
+#: MainWindow.vala:81
+msgid "Go to the website somafm.com"
+msgstr "Přejít na web somafm.com"
+
+#: MainWindow.vala:82
+msgid "Play"
+msgstr "Přehrát"
+
+#: MainWindow.vala:83
+msgid "Stop"
+msgstr "Zastavit"
+
+#: MainWindow.vala:84
+msgid "Start recording"
+msgstr "Записать"
+
+#: MainWindow.vala:85
+msgid "Stop recording"
+msgstr "Zastavit nahrávání"
+
+#: MainWindow.vala:86
+msgid "Open the Records folder"
+msgstr "otevřít složku s nahrávkami"
+
+#: MainWindow.vala:126
+msgid "Welcome!"
+msgstr "Vítejte!"
+
+#: MainWindow.vala:139
+msgid "_Name:"
+msgstr "_Název:"
+
+#: MainWindow.vala:187 MainWindow.vala:222
+msgid "Please choose a station"
+msgstr "Prosím vyberte stanici"
+
+#: MainWindow.vala:199
+msgid "Now playing: "
+msgstr "Nyní hraje: "
+
+#: MainWindow.vala:207
+msgid "Stopped"
+msgstr "Zastaveno"
+
+#: MainWindow.vala:242
+msgid "Do you want to visit the website somafm.com?"
+msgstr "Chcete navštívit web somafm.com?"
+
+#: MainWindow.vala:243 MainWindow.vala:392
+msgid "Question"
+msgstr "Otázka"
+
+#: MainWindow.vala:297 MainWindow.vala:387
+msgid "Choose a station"
+msgstr "Vybrat stanici"
+
+#: MainWindow.vala:315
+msgid "Enter the name"
+msgstr "Zadejte nízev"
+
+#: MainWindow.vala:320
+msgid "Enter the url"
+msgstr "Zadejte URL"
+
+#: MainWindow.vala:331
+msgid "Rename failed"
+msgstr "Přejmenování selhalo"
+
+#: MainWindow.vala:341 MainWindow.vala:356
+msgid "A station with the same name already exists"
+msgstr "Stanice se stejným názvem již existuje"
+
+#: MainWindow.vala:366
+msgid "Add failed"
+msgstr "Přidání selhalo"
+
+#: MainWindow.vala:391
+msgid "Delete station "
+msgstr "Odstranit stanici "
+
+#: MainWindow.vala:398
+msgid "Delete failed"
+msgstr "Odstranění selahlo"
+
+#: MainWindow.vala:465
+msgid "Message"
+msgstr "Zpráva"
