@@ -41,7 +41,7 @@ c_args = [
 ]
 
 # Arguments for Vala
-vala_args = ['--target-glib=2.50', meson.source_root() + '/src/config.vapi']
+vala_args = ['--target-glib=2.50', meson.source_root() + '/vapi/config.vapi']
 
 # Listing dependencies
 dependencies = [
