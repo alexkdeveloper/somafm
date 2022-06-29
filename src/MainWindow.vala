@@ -25,6 +25,7 @@ private Button record_button;
 private Button stop_record_button;
 private Label current_station;
 private Recorder recorder;
+private Adw.ToastOverlay overlay;
 private string directory_path;
 private string item;
 private int mode;
@@ -114,9 +115,11 @@ private int mode;
           stack.set_margin_top(10);
           stack.set_margin_start(10);
           stack.set_margin_bottom(10);
+          overlay = new Adw.ToastOverlay();
+          overlay.set_child(stack);
           var main_box = new Box(Orientation.VERTICAL, 0);
           main_box.append(headerbar);
-          main_box.append(stack);
+          main_box.append(overlay);
           set_content(main_box);
    list_store = new Gtk.ListStore(Columns.N_COLUMNS, typeof(string));
            tree_view = new TreeView.with_model(list_store);
@@ -188,7 +191,7 @@ private int mode;
       TreeModel model;
       TreeIter iter;
       if (!selection.get_selected(out model, out iter)) {
-          alert(_("Please choose a station"));
+          set_toast(_("Please choose a station"));
           return;
       }
  string uri;
@@ -223,7 +226,7 @@ selection.set_mode(SelectionMode.SINGLE);
 TreeModel model;
 TreeIter iter;
 if (!selection.get_selected(out model, out iter)) {
-   alert(_("Please choose a station"));
+   set_toast(_("Please choose a station"));
    return;
 }
 try {
@@ -292,7 +295,7 @@ private void on_stop_record_clicked(){
            TreeModel model;
            TreeIter iter;
            if (!selection.get_selected(out model, out iter)) {
-               alert(_("Choose a station"));
+               set_toast(_("Choose a station"));
                return;
            }
         stack.visible_child = vbox_edit_page;
@@ -310,12 +313,12 @@ private void on_stop_record_clicked(){
 
    private void on_ok_clicked(){
          if(is_empty(entry_name.get_text())){
-		    alert(_("Enter the name"));
+		    set_toast(_("Enter the name"));
                     entry_name.grab_focus();
                     return;
 		}
 		if(is_empty(entry_url.get_text())){
-		   alert(_("Enter the url"));
+		   set_toast(_("Enter the url"));
                    entry_url.grab_focus();
                    return;
 		}
@@ -326,7 +329,7 @@ private void on_stop_record_clicked(){
 		if (select_file.get_basename() != edit_file.get_basename() && !edit_file.query_exists()){
                 FileUtils.rename(select_file.get_path(), edit_file.get_path());
                 if(!edit_file.query_exists()){
-                    alert(_("Rename failed"));
+                    set_toast(_("Rename failed"));
                     return;
                 }
                 try {
@@ -361,7 +364,7 @@ private void on_stop_record_clicked(){
             stderr.printf ("Error: %s\n", e.message);
         }
         if(!file.query_exists()){
-           alert(_("Add failed"));
+           set_toast(_("Add failed"));
            return;
         }else{
            show_stations();
@@ -382,7 +385,7 @@ private void on_stop_record_clicked(){
            TreeModel model;
            TreeIter iter;
            if (!selection.get_selected(out model, out iter)) {
-               alert(_("Choose a station"));
+               set_toast(_("Choose a station"));
                return;
            }
            GLib.File file = GLib.File.new_for_path(directory_path+"/"+item);
@@ -393,7 +396,7 @@ private void on_stop_record_clicked(){
                 if (response == Gtk.ResponseType.OK) {
                      FileUtils.remove (directory_path+"/"+item);
                     if(file.query_exists()){
-                       alert(_("Delete failed"));
+                       set_toast(_("Delete failed"));
                     }else{
                        show_stations();
                     }
@@ -457,6 +460,11 @@ private void on_stop_record_clicked(){
                      stderr.printf ("Error: %s\n", e.message);
              }
           }
+   }
+   private void set_toast (string str){
+       var toast = new Adw.Toast(str);
+       toast.set_timeout(3);
+       overlay.add_toast(toast);
    }
    private void alert (string str){
           var dialog_alert = new Gtk.MessageDialog(this, Gtk.DialogFlags.MODAL, Gtk.MessageType.INFO, Gtk.ButtonsType.OK, str);
