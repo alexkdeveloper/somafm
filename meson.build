@@ -29,7 +29,6 @@ conf.set_quoted('LOCALEDIR', join_paths(get_option('prefix'), get_option('locale
 
 # Other configs
 conf.set_quoted('GETTEXT_PACKAGE', meson.project_name())
-conf
 add_global_arguments('-DDATADIR="' + get_option('datadir') + '"', language: 'c')
 configure_file(output: 'config.h', configuration: conf)
 config_h_dir = include_directories('.')
