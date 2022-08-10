@@ -1,0 +1,131 @@
+# Turkish translation of com.github.alexkdeveloper.somafm.
+#
+# Copyright (C) 2022 com.github.alexkdeveloper.somafm's COPYRIGHT HOLDER
+# This file is distributed under the same licence as the com.github.alexkdeveloper.somafm package.
+#
+# Sabri Ünal <libreajans@gmail.com>, 2022.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: com.github.alexkdeveloper.somafm\n"
+"Report-Msgid-Bugs-To: https://github.com/alexkdeveloper/somafm/issues\n"
+"POT-Creation-Date: 2022-08-10 19:01+0300\n"
+"PO-Revision-Date: 2022-08-10 19:03+0300\n"
+"Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
+"Language-Team: Turkish <gnome-turk@gnome.org>\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 3.1.1\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SearchPath-0: src\n"
+
+#: src/MainWindow.vala:68
+msgid "Back"
+msgstr "Geri"
+
+#: src/MainWindow.vala:69
+msgid "Add station"
+msgstr "İstasyon ekle"
+
+#: src/MainWindow.vala:70
+msgid "Delete station"
+msgstr "İstasyonu sil"
+
+#: src/MainWindow.vala:71
+msgid "Edit station"
+msgstr "İstasyonu düzenle"
+
+#: src/MainWindow.vala:72
+msgid "Play"
+msgstr "Oynat"
+
+#: src/MainWindow.vala:73
+msgid "Stop"
+msgstr "Durdur"
+
+#: src/MainWindow.vala:74
+msgid "Start recording"
+msgstr "Kaydı başlat"
+
+#: src/MainWindow.vala:75
+msgid "Stop recording"
+msgstr "Kaydı durdur"
+
+#: src/MainWindow.vala:102
+msgid "Go to the website somafm.com"
+msgstr "somafm.com web sitesine git"
+
+#: src/MainWindow.vala:103
+msgid "Open the Records folder"
+msgstr "Kayıtlar klasörünü aç"
+
+#: src/MainWindow.vala:137
+msgid "Welcome!"
+msgstr "Hoş Geldiniz!"
+
+#: src/MainWindow.vala:148
+msgid "_Name:"
+msgstr "_Ad:"
+
+#: src/MainWindow.vala:194 src/MainWindow.vala:229
+msgid "Please choose a station"
+msgstr "İstasyon seçiniz"
+
+#: src/MainWindow.vala:206
+msgid "Now playing: "
+msgstr "Oynatılıyor: "
+
+#: src/MainWindow.vala:214
+msgid "Stopped"
+msgstr "Durdurulmuş"
+
+#: src/MainWindow.vala:249
+msgid "Do you want to visit the website somafm.com?"
+msgstr "somafm.com web sitesini ziyaret etmek ister misiniz?"
+
+#: src/MainWindow.vala:250 src/MainWindow.vala:393
+msgid "Question"
+msgstr "Soru"
+
+#: src/MainWindow.vala:298 src/MainWindow.vala:388
+msgid "Choose a station"
+msgstr "İstasyon seçiniz"
+
+#: src/MainWindow.vala:316
+msgid "Enter the name"
+msgstr "Adı giriniz"
+
+#: src/MainWindow.vala:321
+msgid "Enter the url"
+msgstr "URL giriniz"
+
+#: src/MainWindow.vala:332
+msgid "Rename failed"
+msgstr "Yeniden adlandırılamadı"
+
+#: src/MainWindow.vala:342 src/MainWindow.vala:357
+msgid "A station with the same name already exists"
+msgstr "Aynı ada sahip bir istasyon zaten var"
+
+#: src/MainWindow.vala:367
+msgid "Add failed"
+msgstr "Eklenemedi"
+
+#: src/MainWindow.vala:392
+msgid "Delete station "
+msgstr "İstasyonu sil "
+
+#: src/MainWindow.vala:399
+msgid "Delete failed"
+msgstr "Silinemedi"
+
+#: src/MainWindow.vala:471
+msgid "Message"
+msgstr "İleti"
+
+#: src/Recorder.vala:147
+msgid "Recording is ongoing"
+msgstr "Kayıt devam ediyor"
