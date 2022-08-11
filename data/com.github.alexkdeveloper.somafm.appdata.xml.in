@@ -27,6 +27,13 @@
   </categories>
   <content_rating type="oars-1.1"/>
   <releases>
+  <release version="1.1.8" date="2022-08-11">
+   <description>
+    <ul>
+     <li>Added Turkish translation</li>
+    </ul>
+ </description>
+</release>
   <release version="1.1.7" date="2022-06-29">
    <description>
     <ul>
