@@ -161,7 +161,7 @@ private int mode;
         var vbox_url = new Box (Orientation.VERTICAL, 5);
         vbox_url.append (label_url);
         vbox_url.append (entry_url);
-        var button_ok = new Button.with_label("OK");
+        var button_ok = new Button.with_label(_("OK"));
         button_ok.clicked.connect(on_ok_clicked);
         vbox_edit_page = new Box(Orientation.VERTICAL,10);
         vbox_edit_page.append(vbox_name);
