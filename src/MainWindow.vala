@@ -198,7 +198,7 @@ private int mode;
    try {
        FileUtils.get_contents (directory_path+"/"+item, out uri);
    } catch (Error e) {
-       alert(e.message);
+       alert("",e.message);
        return;
    }
  player.uri = uri;
@@ -232,7 +232,7 @@ if (!selection.get_selected(out model, out iter)) {
 try {
    recorder.start_recording();
  } catch (Gst.ParseError e) {
-    alert(e.message);
+    alert("",e.message);
     return;
  }
  set_widget_visible(record_button,false);
@@ -246,12 +246,16 @@ private void on_stop_record_clicked(){
 }
 
    private void on_start_browser_clicked(){
-       var start_browser_dialog = new Gtk.MessageDialog(this, Gtk.DialogFlags.MODAL,Gtk.MessageType.QUESTION, Gtk.ButtonsType.OK_CANCEL, _("Do you want to visit the website somafm.com?"));
-       start_browser_dialog.set_title(_("Question"));
-       start_browser_dialog.show ();
-       start_browser_dialog.response.connect((response) => {
-                if (response == Gtk.ResponseType.OK) {
-                   Gtk.show_uri(this, "https://somafm.com/", Gdk.CURRENT_TIME);
+       var start_browser_dialog = new Adw.MessageDialog(this, _("Do you want to visit the website somafm.com?"), "");
+            start_browser_dialog.add_response("cancel", _("_Cancel"));
+            start_browser_dialog.add_response("ok", _("_OK"));
+            start_browser_dialog.set_default_response("ok");
+            start_browser_dialog.set_close_response("cancel");
+            start_browser_dialog.set_response_appearance("ok", SUGGESTED);
+            start_browser_dialog.show();
+            start_browser_dialog.response.connect((response) => {
+                if (response == "ok") {
+                    Gtk.show_uri(this, "https://somafm.com/", Gdk.CURRENT_TIME);
                 }
                 start_browser_dialog.close();
             });
@@ -339,7 +343,7 @@ private void on_stop_record_clicked(){
             }
             }else{
                 if (select_file.get_basename() != edit_file.get_basename()) {
-                    alert(_("A station with the same name already exists"));
+                    alert(_("A station with the same name already exists"),"");
                     entry_name.grab_focus();
                     return;
                 }
@@ -354,7 +358,7 @@ private void on_stop_record_clicked(){
             case 1:
 	GLib.File file = GLib.File.new_for_path(directory_path+"/"+entry_name.get_text().strip());
         if(file.query_exists()){
-            alert(_("A station with the same name already exists"));
+            alert(_("A station with the same name already exists"),"");
             entry_name.grab_focus();
             return;
         }
@@ -389,12 +393,16 @@ private void on_stop_record_clicked(){
                return;
            }
            GLib.File file = GLib.File.new_for_path(directory_path+"/"+item);
-         var delete_station_dialog = new Gtk.MessageDialog(this, Gtk.DialogFlags.MODAL,Gtk.MessageType.QUESTION, Gtk.ButtonsType.OK_CANCEL, _("Delete station ")+file.get_basename()+"?");
-         delete_station_dialog.set_title(_("Question"));
-         delete_station_dialog.show ();
-         delete_station_dialog.response.connect((response) => {
-                if (response == Gtk.ResponseType.OK) {
-                     FileUtils.remove (directory_path+"/"+item);
+        var delete_station_dialog = new Adw.MessageDialog(this, _("Delete station ")+file.get_basename()+"?", "");
+            delete_station_dialog.add_response("cancel", _("_Cancel"));
+            delete_station_dialog.add_response("ok", _("_OK"));
+            delete_station_dialog.set_default_response("ok");
+            delete_station_dialog.set_close_response("cancel");
+            delete_station_dialog.set_response_appearance("ok", SUGGESTED);
+            delete_station_dialog.show();
+            delete_station_dialog.response.connect((response) => {
+                if (response == "ok") {
+                    FileUtils.remove (directory_path+"/"+item);
                     if(file.query_exists()){
                        set_toast(_("Delete failed"));
                     }else{
@@ -466,11 +474,15 @@ private void on_stop_record_clicked(){
        toast.set_timeout(3);
        overlay.add_toast(toast);
    }
-   private void alert (string str){
-          var dialog_alert = new Gtk.MessageDialog(this, Gtk.DialogFlags.MODAL, Gtk.MessageType.INFO, Gtk.ButtonsType.OK, str);
-          dialog_alert.set_title(_("Message"));
-          dialog_alert.response.connect((_) => { dialog_alert.close(); });
-          dialog_alert.show();
-       }
+   private void alert (string heading, string body){
+            var dialog_alert = new Adw.MessageDialog(this, heading, body);
+            if (body != "") {
+                dialog_alert.set_body(body);
+            }
+            dialog_alert.add_response("ok", _("_OK"));
+            dialog_alert.set_response_appearance("ok", SUGGESTED);
+            dialog_alert.response.connect((_) => { dialog_alert.close(); });
+            dialog_alert.show();
+        }
    }
 }
