@@ -490,7 +490,7 @@ private void on_stop_record_clicked(){
                 license_type = License.GPL_3_0,
                 developer_name = "Alex Kryuchkov",
                 developers = {"Alex Kryuchkov https://github.com/alexkdeveloper"},
-                translator_credits = "Alex Kryuchkov\nvikdevelop\nHeimen Stoffels <vistausss@fastmail.com>\nSabri Ünal <libreajans@gmail.com>",
+                translator_credits = "Alex Kryuchkov https://github.com/alexkdeveloper\nvikdevelop https://github.com/vikdevelop\nHeimen Stoffels <vistausss@fastmail.com>\nSabri Ünal <libreajans@gmail.com>",
                 website = "https://github.com/alexkdeveloper/somafm",
                 issue_url = "https://github.com/alexkdeveloper/somafm/issues"
             };
