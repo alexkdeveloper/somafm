@@ -95,14 +95,26 @@ private int mode;
         open_directory_action.activate.connect (on_open_directory_clicked);
         var go_to_website_action = new GLib.SimpleAction ("website", null);
         go_to_website_action.activate.connect(on_start_browser_clicked);
+        var about_action = new GLib.SimpleAction ("about", null);
+        about_action.activate.connect (about);
+        var quit_action = new GLib.SimpleAction ("quit", null);
         var app = GLib.Application.get_default();
-        app.add_action (open_directory_action);
+        quit_action.activate.connect(()=>{
+               app.quit();
+            });
+        app.add_action(open_directory_action);
         app.add_action(go_to_website_action);
+        app.add_action(about_action);
+        app.add_action(quit_action);
         var menu = new GLib.Menu();
         var item_website = new GLib.MenuItem (_("Go to the website somafm.com"), "app.website");
         var item_open = new GLib.MenuItem (_("Open the Records folder"), "app.open");
+        var item_about = new GLib.MenuItem (_("About Soma Radio"), "app.about");
+        var item_quit = new GLib.MenuItem (_("Quit"), "app.quit");
         menu.append_item (item_website);
         menu.append_item (item_open);
+        menu.append_item (item_about);
+        menu.append_item (item_quit);
         var popover = new PopoverMenu.from_model(menu);
         menu_button.set_popover(popover);
         set_widget_visible(back_button,false);
@@ -469,6 +481,22 @@ private void on_stop_record_clicked(){
              }
           }
    }
+    private void about () {
+	        var win = new Adw.AboutWindow () {
+                application_name = "Soma Radio",
+                application_icon = "com.github.alexkdeveloper.somafm",
+                version = "1.2.0",
+                copyright = "Copyright © 2021-2022 Alex Kryuchkov",
+                license_type = License.GPL_3_0,
+                developer_name = "Alex Kryuchkov",
+                developers = {"Alex Kryuchkov https://github.com/alexkdeveloper"},
+                translator_credits = "Alex Kryuchkov\nvikdevelop\nHeimen Stoffels <vistausss@fastmail.com>\nSabri Ünal <libreajans@gmail.com>",
+                website = "https://github.com/alexkdeveloper/somafm",
+                issue_url = "https://github.com/alexkdeveloper/somafm/issues"
+            };
+            win.set_transient_for (this);
+            win.show ();
+        }
    private void set_toast (string str){
        var toast = new Adw.Toast(str);
        toast.set_timeout(3);
