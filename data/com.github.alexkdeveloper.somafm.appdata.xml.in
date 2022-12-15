@@ -34,6 +34,7 @@
    <description>
     <ul>
      <li>Port to AdwActionRow and AdwEntryRow</li>
+     <li>Updated Dutch translation</li>
     </ul>
  </description>
 </release>
