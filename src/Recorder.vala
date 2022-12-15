@@ -63,7 +63,7 @@ public class Recorder : Object {
 
         if (muxer != null) {
             pipeline.add (muxer);
-            encoder.get_static_pad ("src").link (muxer.get_request_pad ("audio_%u"));
+            encoder.get_static_pad ("src").link (muxer.request_pad_simple ("audio_%u"));
             muxer.link (sink);
         } else {
             encoder.link (sink);

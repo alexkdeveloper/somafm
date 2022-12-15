@@ -68,8 +68,8 @@ msgid "Welcome!"
 msgstr "Добро пожаловать!"
 
 #: MainWindow.vala:160
-msgid "_Name:"
-msgstr "_Название:"
+msgid "Name"
+msgstr "Название"
 
 #: MainWindow.vala:176
 msgid "OK"

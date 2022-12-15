@@ -10,11 +10,9 @@ private Stack stack;
 private Box vbox_player_page;
 private Box vbox_edit_page;
 private dynamic Element player;
-private Gtk.ListStore list_store;
-private TreeView tree_view;
-private GLib.List<string> list;
-private Entry entry_name;
-private Entry entry_url;
+private Gtk.ListBox list_box;
+private Adw.EntryRow entry_name;
+private Adw.EntryRow entry_url;
 private Button back_button;
 private Button add_button;
 private Button delete_button;
@@ -133,51 +131,68 @@ private int mode;
           main_box.append(headerbar);
           main_box.append(overlay);
           set_content(main_box);
-   list_store = new Gtk.ListStore(Columns.N_COLUMNS, typeof(string));
-           tree_view = new TreeView.with_model(list_store);
-           var text = new CellRendererText ();
-           var column = new TreeViewColumn ();
-           column.pack_start (text, true);
-           column.add_attribute (text, "markup", Columns.TEXT);
-           tree_view.append_column (column);
-           tree_view.set_headers_visible (false);
-           tree_view.cursor_changed.connect(on_select_item);
-   var scroll = new ScrolledWindow ();
-        scroll.set_policy (PolicyType.AUTOMATIC, PolicyType.AUTOMATIC);
-        scroll.set_vexpand(true);
-        scroll.set_child (this.tree_view);
+
+        list_box = new Gtk.ListBox ();
+        list_box.add_css_class("boxed-list");
+        list_box.selected_rows_changed.connect(on_select_item);
+        var scroll = new Gtk.ScrolledWindow () {
+            propagate_natural_height = true,
+            propagate_natural_width = true
+        };
+        var clamp = new Adw.Clamp(){
+            tightening_threshold = 100
+        };
+        clamp.set_child(list_box);
+
+        scroll.set_child(clamp);
+
         current_station = new Label(_("Welcome!"));
-   vbox_player_page = new Box(Orientation.VERTICAL,10);
+        current_station.add_css_class("title-4");
+   vbox_player_page = new Box(Orientation.VERTICAL,5);
    vbox_player_page.append (current_station);
    vbox_player_page.append (scroll);
    stack.add_child(vbox_player_page);
-        entry_name = new Entry();
-        entry_name.set_icon_from_icon_name (Gtk.EntryIconPosition.SECONDARY, "edit-clear-symbolic");
-        entry_name.icon_press.connect ((pos, event) => {
-              entry_name.set_text("");
-              entry_name.grab_focus();
+   var clear_name = new Button();
+        clear_name.set_icon_name("edit-clear-symbolic");
+        clear_name.add_css_class("destructive-action");
+        clear_name.add_css_class("circular");
+        clear_name.valign = Align.CENTER;
+        clear_name.visible = false;
+        entry_name = new Adw.EntryRow();
+        entry_name.add_suffix(clear_name);
+        entry_name.set_title(_("Name"));
+   var clear_url = new Button();
+        clear_url.set_icon_name("edit-clear-symbolic");
+        clear_url.add_css_class("destructive-action");
+        clear_url.add_css_class("circular");
+        clear_url.valign = Align.CENTER;
+        clear_url.visible = false;
+        entry_url = new Adw.EntryRow();
+        entry_url.add_suffix(clear_url);
+        entry_url.set_title(_("URL"));
+        entry_name.changed.connect((event) => {
+            on_entry_change(entry_name, clear_name);
         });
-        var label_name = new Label.with_mnemonic (_("_Name:"));
-        label_name.set_xalign(0);
-        var vbox_name = new Box (Orientation.VERTICAL, 5);
-        vbox_name.append (label_name);
-        vbox_name.append (entry_name);
-        entry_url = new Entry();
-        entry_url.set_icon_from_icon_name (Gtk.EntryIconPosition.SECONDARY, "edit-clear-symbolic");
-        entry_url.icon_press.connect ((pos, event) => {
-              entry_url.set_text("");
-              entry_url.grab_focus();
+        clear_name.clicked.connect((event) => {
+            on_clear_entry(entry_name);
         });
-        var label_url = new Label.with_mnemonic ("_URL:");
-        label_url.set_xalign(0);
-        var vbox_url = new Box (Orientation.VERTICAL, 5);
-        vbox_url.append (label_url);
-        vbox_url.append (entry_url);
+        entry_url.changed.connect((event) => {
+            on_entry_change(entry_url, clear_url);
+        });
+        clear_url.clicked.connect((event) => {
+            on_clear_entry(entry_url);
+        });
+        var list = new ListBox();
+        list.add_css_class("boxed-list");
+        list.append(entry_name);
+        list.append(entry_url);
         var button_ok = new Button.with_label(_("OK"));
+        button_ok.add_css_class("suggested-action");
         button_ok.clicked.connect(on_ok_clicked);
         vbox_edit_page = new Box(Orientation.VERTICAL,10);
-        vbox_edit_page.append(vbox_name);
-        vbox_edit_page.append(vbox_url);
+        vbox_edit_page.margin_start = 20;
+        vbox_edit_page.margin_end = 20;
+        vbox_edit_page.append(list);
         vbox_edit_page.append(button_ok);
         stack.add_child(vbox_edit_page);
         stack.visible_child = vbox_player_page;
@@ -196,16 +211,23 @@ private int mode;
    recorder = Recorder.get_default ();
    record_button.set_sensitive(false);
  }
-
+private void on_clear_entry(Adw.EntryRow entry){
+    entry.set_text("");
+    entry.grab_focus();
+}
+private void on_entry_change(Adw.EntryRow entry, Gtk.Button clear){
+    if (!is_empty(entry.get_text())) {
+        clear.set_visible(true);
+    } else {
+        clear.set_visible(false);
+    }
+}
  private void on_play_station(){
-    var selection = tree_view.get_selection();
-      selection.set_mode(SelectionMode.SINGLE);
-      TreeModel model;
-      TreeIter iter;
-      if (!selection.get_selected(out model, out iter)) {
-          set_toast(_("Please choose a station"));
-          return;
-      }
+    var selection = list_box.get_selected_row();
+           if (!selection.is_selected()) {
+               set_toast(_("Please choose a station"));
+               return;
+           }
  string uri;
    try {
        FileUtils.get_contents (directory_path+"/"+item, out uri);
@@ -233,14 +255,11 @@ private void on_stop_station(){
 }
 
 private void on_record_clicked(){
-var selection = tree_view.get_selection();
-selection.set_mode(SelectionMode.SINGLE);
-TreeModel model;
-TreeIter iter;
-if (!selection.get_selected(out model, out iter)) {
-   set_toast(_("Please choose a station"));
-   return;
-}
+    var selection = list_box.get_selected_row();
+    if (!selection.is_selected()) {
+        set_toast(_("Please choose a station"));
+        return;
+    }
 try {
    recorder.start_recording();
  } catch (Gst.ParseError e) {
@@ -278,19 +297,14 @@ private void on_stop_record_clicked(){
   }  
 
    private void on_select_item () {
-           var selection = tree_view.get_selection();
-           selection.set_mode(SelectionMode.SINGLE);
-           TreeModel model;
-           TreeIter iter;
-           if (!selection.get_selected(out model, out iter)) {
+           var selection = list_box.get_selected_row();
+           if (!selection.is_selected()) {
                return;
            }
-           TreePath path = model.get_path(iter);
-           var index = int.parse(path.to_string());
-           if (index >= 0) {
-               item = list.nth_data(index);
-               recorder.station_name = item;
-           }
+          GLib.Value value = "";
+          selection.get_property("title", ref value);
+          item = value.get_string();
+          recorder.station_name = item;
        }
 
    private void on_add_clicked () {
@@ -306,11 +320,8 @@ private void on_stop_record_clicked(){
   }
 
    private void on_edit_clicked(){
-         var selection = tree_view.get_selection();
-           selection.set_mode(SelectionMode.SINGLE);
-           TreeModel model;
-           TreeIter iter;
-           if (!selection.get_selected(out model, out iter)) {
+    var selection = list_box.get_selected_row();
+           if (!selection.is_selected()) {
                set_toast(_("Choose a station"));
                return;
            }
@@ -396,14 +407,11 @@ private void on_stop_record_clicked(){
    }
 
    private void on_delete_dialog(){
-       var selection = tree_view.get_selection();
-           selection.set_mode(SelectionMode.SINGLE);
-           TreeModel model;
-           TreeIter iter;
-           if (!selection.get_selected(out model, out iter)) {
-               set_toast(_("Choose a station"));
-               return;
-           }
+    var selection = list_box.get_selected_row();
+    if (!selection.is_selected()) {
+        set_toast(_("Choose a station"));
+        return;
+    }
            GLib.File file = GLib.File.new_for_path(directory_path+"/"+item);
         var delete_station_dialog = new Adw.MessageDialog(this, _("Delete station ")+file.get_basename()+"?", "");
             delete_station_dialog.add_response("cancel", _("_Cancel"));
@@ -426,8 +434,7 @@ private void on_stop_record_clicked(){
          }
 
    private void show_stations () {
-           list_store.clear();
-           list = new GLib.List<string> ();
+           var list = new GLib.List<string> ();
             try {
             Dir dir = Dir.open (directory_path, 0);
             string? name = null;
@@ -437,10 +444,18 @@ private void on_stop_record_clicked(){
         } catch (FileError err) {
             stderr.printf (err.message);
         }
-         TreeIter iter;
+        for (
+            var child = (Gtk.ListBoxRow) list_box.get_last_child ();
+                child != null;
+                child = (Gtk.ListBoxRow) list_box.get_last_child ()
+        ) {
+            list_box.remove(child);
+        }
            foreach (string item in list) {
-               list_store.append(out iter);
-               list_store.set(iter, Columns.TEXT, item);
+                var row = new Adw.ActionRow () {
+                title = item
+            };
+            list_box.append(row);
            }
        }
 
@@ -467,9 +482,6 @@ private void on_stop_record_clicked(){
         return str.strip().length == 0;
       }
 
-       private enum Columns {
-           TEXT, N_COLUMNS
-       }
    private void create_default_stations(){
           string[] name_station = {"Groove Salad","Drone Zone","Deep Space One","Indie Pop Rocks!","Space Station Soma","Lush","Secret Agent","Underground 80s","Groove Salad Classic","Left Coast 70s","Folk Forward","Beat Blender","DEF CON Radio","Boot Liquor","Suburbs of Goa","BAGeL Radio","Synphaera Radio","The Trip","Sonic Universe","PopTron","Seven Inch Soul","Fluid","Dub Step Beyond","Illinois Street Lounge","ThistleRadio","Mission Control","Digitalis","Heavyweight Reggae","cliqhop idm","Metal Detector","Vaporwaves","SF 10-33","Covers","Black Rock FM","Doomed (Special)","n5MD Radio","SomaFM Live","SF Police Scanner"};
           string[] url_station = {"http://ice4.somafm.com/groovesalad-256-mp3","http://ice2.somafm.com/dronezone-256-mp3","http://ice4.somafm.com/deepspaceone-128-mp3","http://ice2.somafm.com/indiepop-128-mp3","http://ice6.somafm.com/spacestation-128-mp3","http://ice6.somafm.com/lush-128-mp3","http://ice6.somafm.com/secretagent-128-mp3","http://ice6.somafm.com/u80s-256-mp3","http://ice2.somafm.com/gsclassic-128-mp3","http://ice2.somafm.com/seventies-320-mp3","http://ice4.somafm.com/folkfwd-128-mp3","http://ice2.somafm.com/beatblender-128-mp3","http://ice4.somafm.com/defcon-256-mp3","http://ice4.somafm.com/bootliquor-320-mp3","http://ice6.somafm.com/suburbsofgoa-128-mp3","http://ice6.somafm.com/bagel-128-mp3","http://ice6.somafm.com/synphaera-256-mp3","http://ice4.somafm.com/thetrip-128-mp3","http://ice6.somafm.com/sonicuniverse-256-mp3","http://ice2.somafm.com/poptron-128-mp3","http://ice6.somafm.com/7soul-128-mp3","http://ice2.somafm.com/fluid-128-mp3","http://ice4.somafm.com/dubstep-256-mp3","http://ice6.somafm.com/illstreet-128-mp3","http://ice6.somafm.com/thistle-128-mp3","http://ice6.somafm.com/missioncontrol-128-mp3","http://ice4.somafm.com/digitalis-128-mp3","http://ice4.somafm.com/reggae-256-mp3","http://ice4.somafm.com/cliqhop-256-mp3","http://ice6.somafm.com/metal-128-mp3","http://ice4.somafm.com/vaporwaves-128-mp3","http://ice6.somafm.com/sf1033-128-mp3","http://ice2.somafm.com/covers-128-mp3","http://ice2.somafm.com/brfm-128-mp3","http://ice6.somafm.com/specials-128-mp3","http://ice2.somafm.com/n5md-128-mp3","http://ice2.somafm.com/live-128-mp3","http://ice6.somafm.com/scanner-128-mp3"};
@@ -485,7 +497,7 @@ private void on_stop_record_clicked(){
 	        var win = new Adw.AboutWindow () {
                 application_name = "Soma Radio",
                 application_icon = "com.github.alexkdeveloper.somafm",
-                version = "1.2.0",
+                version = "1.2.1",
                 copyright = "Copyright © 2021-2022 Alex Kryuchkov",
                 license_type = License.GPL_3_0,
                 developer_name = "Alex Kryuchkov",

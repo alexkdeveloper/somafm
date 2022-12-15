@@ -62,8 +62,8 @@ msgid "Welcome!"
 msgstr "Welkom!"
 
 #: src/MainWindow.vala:139
-msgid "_Name:"
-msgstr "_Naam:"
+msgid "Name"
+msgstr "Naam"
 
 #: src/MainWindow.vala:185 src/MainWindow.vala:220
 msgid "Please choose a station"

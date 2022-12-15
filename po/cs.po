@@ -60,8 +60,8 @@ msgid "Welcome!"
 msgstr "Vítejte!"
 
 #: MainWindow.vala:139
-msgid "_Name:"
-msgstr "_Název:"
+msgid "Name"
+msgstr "Název"
 
 #: MainWindow.vala:187 MainWindow.vala:222
 msgid "Please choose a station"
