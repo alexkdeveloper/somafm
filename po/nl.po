@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: com.github.alexkdeveloper.somafm\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-01 14:39+0200\n"
-"PO-Revision-Date: 2022-05-01 14:43+0200\n"
+"POT-Creation-Date: 2022-12-15 11:36+0100\n"
+"PO-Revision-Date: 2022-12-15 11:37+0100\n"
 "Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
 "Language-Team: Dutch <kde-i18n-nl@kde.org>\n"
 "Language: nl\n"
@@ -15,108 +15,130 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 22.04.0\n"
+"X-Generator: Poedit 3.2.2\n"
 
-#: src/MainWindow.vala:74
+#: src/MainWindow.vala:66
 msgid "Back"
 msgstr "Terug"
 
-#: src/MainWindow.vala:75
+#: src/MainWindow.vala:67
 msgid "Add station"
 msgstr "Radiostation toevoegen"
 
-#: src/MainWindow.vala:76
+#: src/MainWindow.vala:68
 msgid "Delete station"
 msgstr "Radiostation verwijderen"
 
-#: src/MainWindow.vala:77
+#: src/MainWindow.vala:69
 msgid "Edit station"
 msgstr "Radiostation bewerken"
 
-#: src/MainWindow.vala:78
-msgid "Go to the website somafm.com"
-msgstr "Open de website ‘somafm.com’"
-
-#: src/MainWindow.vala:79
+#: src/MainWindow.vala:70
 msgid "Play"
 msgstr "Beluisteren"
 
-#: src/MainWindow.vala:80
+#: src/MainWindow.vala:71
 msgid "Stop"
 msgstr "Stoppen"
 
-#: src/MainWindow.vala:81
+#: src/MainWindow.vala:72
 msgid "Start recording"
 msgstr "Opname starten"
 
-#: src/MainWindow.vala:82
+#: src/MainWindow.vala:73
 msgid "Stop recording"
 msgstr "Opname stoppen"
 
-#: src/MainWindow.vala:83
+#: src/MainWindow.vala:108
+msgid "Go to the website somafm.com"
+msgstr "Open de website ‘somafm.com’"
+
+#: src/MainWindow.vala:109
 msgid "Open the Records folder"
 msgstr "Opnamemap openen"
 
-#: src/MainWindow.vala:128
+#: src/MainWindow.vala:110
+msgid "About Soma Radio"
+msgstr "Over Soma Radio"
+
+#: src/MainWindow.vala:111
+msgid "Quit"
+msgstr "Afsluiten"
+
+#: src/MainWindow.vala:149
 msgid "Welcome!"
 msgstr "Welkom!"
 
-#: src/MainWindow.vala:139
+#: src/MainWindow.vala:163
 msgid "Name"
 msgstr "Naam"
 
-#: src/MainWindow.vala:185 src/MainWindow.vala:220
+#: src/MainWindow.vala:172
+msgid "URL"
+msgstr "Url"
+
+#: src/MainWindow.vala:189
+msgid "OK"
+msgstr "Oké"
+
+#: src/MainWindow.vala:228 src/MainWindow.vala:260
 msgid "Please choose a station"
 msgstr "Kies een radiostation"
 
-#: src/MainWindow.vala:197
+#: src/MainWindow.vala:240
 msgid "Now playing: "
 msgstr "U luistert naar "
 
-#: src/MainWindow.vala:205
+#: src/MainWindow.vala:248
 msgid "Stopped"
 msgstr "Gestopt"
 
-#: src/MainWindow.vala:240
+#: src/MainWindow.vala:280
 msgid "Do you want to visit the website somafm.com?"
 msgstr "Wilt u de website ‘somafm.com’ openen?"
 
-#: src/MainWindow.vala:241 src/MainWindow.vala:384
-msgid "Question"
-msgstr "Vraag"
+#: src/MainWindow.vala:281 src/MainWindow.vala:417
+msgid "_Cancel"
+msgstr "_Annuleren"
 
-#: src/MainWindow.vala:289 src/MainWindow.vala:379
+#: src/MainWindow.vala:282 src/MainWindow.vala:418 src/MainWindow.vala:522
+msgid "_OK"
+msgstr "_Oké"
+
+#: src/MainWindow.vala:325 src/MainWindow.vala:412
 msgid "Choose a station"
 msgstr "Kies een radiostation"
 
-#: src/MainWindow.vala:307
+#: src/MainWindow.vala:343
 msgid "Enter the name"
 msgstr "Voer een naam in"
 
-#: src/MainWindow.vala:312
+#: src/MainWindow.vala:348
 msgid "Enter the url"
 msgstr "Voer de url in"
 
-#: src/MainWindow.vala:323
+#: src/MainWindow.vala:359
 msgid "Rename failed"
 msgstr "De naam kan niet worden gewijzigd"
 
-#: src/MainWindow.vala:333 src/MainWindow.vala:348
+#: src/MainWindow.vala:369 src/MainWindow.vala:384
 msgid "A station with the same name already exists"
 msgstr "Er is al een radiostation met deze naam"
 
-#: src/MainWindow.vala:358
+#: src/MainWindow.vala:394
 msgid "Add failed"
 msgstr "Het radiostation kan niet worden toegevoegd"
 
-#: src/MainWindow.vala:383
+#: src/MainWindow.vala:416
 msgid "Delete station "
 msgstr "Radiostation verwijderen "
 
-#: src/MainWindow.vala:390
+#: src/MainWindow.vala:427
 msgid "Delete failed"
 msgstr "Het verwijderen is mislukt"
 
-#: src/MainWindow.vala:459
-msgid "Message"
-msgstr "Bericht"
+#~ msgid "Question"
+#~ msgstr "Vraag"
+
+#~ msgid "Message"
+#~ msgstr "Bericht"
