@@ -133,6 +133,7 @@ private int mode;
           set_content(main_box);
 
         list_box = new Gtk.ListBox ();
+        list_box.vexpand = true;
         list_box.add_css_class("boxed-list");
         list_box.selected_rows_changed.connect(on_select_item);
         var scroll = new Gtk.ScrolledWindow () {
