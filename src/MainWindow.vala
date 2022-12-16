@@ -149,6 +149,8 @@ private int mode;
 
         current_station = new Label(_("Welcome!"));
         current_station.add_css_class("title-4");
+	current_station.wrap = true;
+        current_station.wrap_mode = WORD;
    vbox_player_page = new Box(Orientation.VERTICAL,5);
    vbox_player_page.append (current_station);
    vbox_player_page.append (scroll);
