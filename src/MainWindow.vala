@@ -141,7 +141,9 @@ private int mode;
             propagate_natural_width = true
         };
         var clamp = new Adw.Clamp(){
-            tightening_threshold = 100
+            tightening_threshold = 100,
+            margin_top = 5,
+            margin_bottom = 5
         };
         clamp.set_child(list_box);
 
@@ -149,7 +151,7 @@ private int mode;
 
         current_station = new Label(_("Welcome!"));
         current_station.add_css_class("title-4");
-	current_station.wrap = true;
+	    current_station.wrap = true;
         current_station.wrap_mode = WORD;
    vbox_player_page = new Box(Orientation.VERTICAL,5);
    vbox_player_page.append (current_station);
