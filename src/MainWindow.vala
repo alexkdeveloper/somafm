@@ -10,7 +10,7 @@ private Stack stack;
 private Box vbox_player_page;
 private Box vbox_edit_page;
 private dynamic Element player;
-private Gtk.ListBox list_box;
+private ListBox list_box;
 private Adw.EntryRow entry_name;
 private Adw.EntryRow entry_url;
 private Button back_button;
