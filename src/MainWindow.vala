@@ -382,6 +382,7 @@ private void on_stop_record_clicked(){
              }
             }
             show_stations();
+            list_box.select_row(list_box.get_row_at_index(get_index(edit_file.get_basename())));
             break;
             case 1:
 	GLib.File file = GLib.File.new_for_path(directory_path+"/"+entry_name.get_text().strip());
@@ -400,11 +401,31 @@ private void on_stop_record_clicked(){
            return;
         }else{
            show_stations();
+           list_box.select_row(list_box.get_row_at_index(get_index(file.get_basename())));
         }
         break;
       }
       on_back_clicked();
    }
+
+   private int get_index(string item){
+            int index_of_item = 0;
+            try {
+            Dir dir = Dir.open (directory_path, 0);
+            string? name = null;
+            int index = 0;
+            while ((name = dir.read_name ()) != null) {
+                index++;
+                if(name == item){
+                  index_of_item = index - 1;
+                  break;
+                }
+            }
+        } catch (FileError err) {
+            stderr.printf (err.message);
+          }
+          return index_of_item;
+        }
 
    private void on_back_clicked(){
        stack.visible_child = vbox_player_page;
