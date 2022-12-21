@@ -523,7 +523,7 @@ private void on_stop_record_clicked(){
 	        var win = new Adw.AboutWindow () {
                 application_name = "Soma Radio",
                 application_icon = "com.github.alexkdeveloper.somafm",
-                version = "1.2.1",
+                version = "1.2.2",
                 copyright = "Copyright © 2021-2022 Alex Kryuchkov",
                 license_type = License.GPL_3_0,
                 developer_name = "Alex Kryuchkov",
