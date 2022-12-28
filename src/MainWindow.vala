@@ -523,12 +523,12 @@ private void on_stop_record_clicked(){
 	        var win = new Adw.AboutWindow () {
                 application_name = "Soma Radio",
                 application_icon = "com.github.alexkdeveloper.somafm",
-                version = "1.2.2",
+                version = "1.2.3",
                 copyright = "Copyright © 2021-2022 Alex Kryuchkov",
                 license_type = License.GPL_3_0,
                 developer_name = "Alex Kryuchkov",
                 developers = {"Alex Kryuchkov https://github.com/alexkdeveloper"},
-                translator_credits = "Alex Kryuchkov https://github.com/alexkdeveloper\nvikdevelop https://github.com/vikdevelop\nHeimen Stoffels <vistausss@fastmail.com>\nSabri Ünal <libreajans@gmail.com>",
+                translator_credits = _("translator-credits"),
                 website = "https://github.com/alexkdeveloper/somafm",
                 issue_url = "https://github.com/alexkdeveloper/somafm/issues"
             };
