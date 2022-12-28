@@ -130,6 +130,6 @@ msgstr "İleti"
 msgid "Recording is ongoing"
 msgstr "Kayıt devam ediyor"
 
-#: MainWindow.vala:531
+#: src/MainWindow.vala:531
 msgid "translator-credits"
 msgstr "Sabri Ünal <libreajans@gmail.com>"
