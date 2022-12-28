@@ -118,3 +118,7 @@ msgstr "Odstranění selahlo"
 #: MainWindow.vala:465
 msgid "Message"
 msgstr "Zpráva"
+
+#: MainWindow.vala:531
+msgid "translator-credits"
+msgstr "vikdevelop https://github.com/vikdevelop"

@@ -137,6 +137,10 @@ msgstr "Radiostation verwijderen "
 msgid "Delete failed"
 msgstr "Het verwijderen is mislukt"
 
+#: MainWindow.vala:531
+msgid "translator-credits"
+msgstr "Heimen Stoffels <vistausss@fastmail.com>"
+
 #~ msgid "Question"
 #~ msgstr "Vraag"
 

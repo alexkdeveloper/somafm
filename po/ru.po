@@ -131,6 +131,10 @@ msgstr "Удалить станцию "
 msgid "Delete failed"
 msgstr "Не удалось удалить"
 
+#: MainWindow.vala:531
+msgid "translator-credits"
+msgstr "Alex Kryuchkov https://github.com/alexkdeveloper"
+
 #~ msgid "Question"
 #~ msgstr "Вопрос"
 
