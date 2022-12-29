@@ -96,6 +96,9 @@ private int mode;
             if(search_box.is_visible()){
                 search_box.hide();
                 entry_search.set_text("");
+                if(item != null){
+                     list_box.select_row(list_box.get_row_at_index(get_index(item)));
+                  }
             }else{
                 search_box.show();
                 entry_search.grab_focus();
@@ -179,6 +182,9 @@ private int mode;
         hide_button.clicked.connect(()=>{
            search_box.hide();
            entry_search.set_text("");
+           if(item != null){
+               list_box.select_row(list_box.get_row_at_index(get_index(item)));
+            }
         });
 
         current_station = new Label(_("Welcome!"));
