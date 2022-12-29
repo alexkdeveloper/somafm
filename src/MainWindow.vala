@@ -9,10 +9,12 @@ namespace SomaFM {
 private Stack stack;
 private Box vbox_player_page;
 private Box vbox_edit_page;
+private Box search_box;
 private dynamic Element player;
 private ListBox list_box;
 private Adw.EntryRow entry_name;
 private Adw.EntryRow entry_url;
+private SearchEntry search_entry;
 private Button back_button;
 private Button add_button;
 private Button delete_button;
@@ -89,6 +91,11 @@ private int mode;
         headerbar.pack_end(stop_record_button);
         headerbar.pack_end(stop_button);
         headerbar.pack_end(play_button);
+        var search_action = new GLib.SimpleAction ("search", null);
+        search_action.activate.connect(()=>{
+            search_box.show();
+            search_entry.grab_focus();
+            });
         var open_directory_action = new GLib.SimpleAction ("open", null);
         open_directory_action.activate.connect (on_open_directory_clicked);
         var go_to_website_action = new GLib.SimpleAction ("website", null);
@@ -100,15 +107,18 @@ private int mode;
         quit_action.activate.connect(()=>{
                app.quit();
             });
+        app.add_action(search_action);
         app.add_action(open_directory_action);
         app.add_action(go_to_website_action);
         app.add_action(about_action);
         app.add_action(quit_action);
         var menu = new GLib.Menu();
+        var item_search = new GLib.MenuItem (_("Search"), "app.search");
         var item_website = new GLib.MenuItem (_("Go to the website somafm.com"), "app.website");
         var item_open = new GLib.MenuItem (_("Open the Records folder"), "app.open");
         var item_about = new GLib.MenuItem (_("About Soma Radio"), "app.about");
         var item_quit = new GLib.MenuItem (_("Quit"), "app.quit");
+        menu.append_item (item_search);
         menu.append_item (item_website);
         menu.append_item (item_open);
         menu.append_item (item_about);
@@ -135,7 +145,7 @@ private int mode;
         list_box = new Gtk.ListBox ();
         list_box.vexpand = true;
         list_box.add_css_class("boxed-list");
-        list_box.selected_rows_changed.connect(on_select_item);
+        list_box.row_selected.connect(on_select_item);
         var scroll = new Gtk.ScrolledWindow () {
             propagate_natural_height = true,
             propagate_natural_width = true
@@ -149,11 +159,28 @@ private int mode;
 
         scroll.set_child(clamp);
 
+        search_entry = new SearchEntry();
+        search_entry.hexpand = true;
+        search_entry.changed.connect(show_stations);
+        var hide_button = new Button();
+        hide_button.set_icon_name("window-close-symbolic");
+        hide_button.add_css_class("flat");
+        search_box = new Box(Orientation.HORIZONTAL,5);
+        search_box.margin_start = 30;
+        search_box.margin_end = 30;
+        search_box.append(search_entry);
+        search_box.append(hide_button);
+        search_box.hide();
+        hide_button.clicked.connect(()=>{
+           search_box.hide();
+           search_entry.set_text("");
+        });
         current_station = new Label(_("Welcome!"));
         current_station.add_css_class("title-4");
 	current_station.wrap = true;
         current_station.wrap_mode = WORD;
    vbox_player_page = new Box(Orientation.VERTICAL,5);
+   vbox_player_page.append (search_box);
    vbox_player_page.append (current_station);
    vbox_player_page.append (scroll);
    stack.add_child(vbox_player_page);
@@ -465,7 +492,13 @@ private void on_stop_record_clicked(){
             Dir dir = Dir.open (directory_path, 0);
             string? name = null;
             while ((name = dir.read_name ()) != null) {
-                list.append(name);
+                if(search_box.is_visible()){
+                    if(name.contains(search_entry.get_text())){
+                       list.append(name);
+                    }
+                    }else{
+                       list.append(name);
+                }
             }
         } catch (FileError err) {
             stderr.printf (err.message);
