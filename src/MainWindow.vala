@@ -563,7 +563,7 @@ private void on_stop_record_clicked(){
                 application_name = "Soma Radio",
                 application_icon = "com.github.alexkdeveloper.somafm",
                 version = "1.2.3",
-                copyright = "Copyright © 2021-2022 Alex Kryuchkov",
+                copyright = "Copyright © 2021-2023 Alex Kryuchkov",
                 license_type = License.GPL_3_0,
                 developer_name = "Alex Kryuchkov",
                 developers = {"Alex Kryuchkov https://github.com/alexkdeveloper"},
