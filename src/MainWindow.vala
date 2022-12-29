@@ -93,8 +93,13 @@ private int mode;
         headerbar.pack_end(play_button);
         var search_action = new GLib.SimpleAction ("search", null);
         search_action.activate.connect(()=>{
-            search_box.show();
-            entry_search.grab_focus();
+            if(search_box.is_visible()){
+                search_box.hide();
+                entry_search.set_text("");
+            }else{
+                search_box.show();
+                entry_search.grab_focus();
+              }
             });
         var open_directory_action = new GLib.SimpleAction ("open", null);
         open_directory_action.activate.connect (on_open_directory_clicked);
@@ -175,6 +180,7 @@ private int mode;
            search_box.hide();
            entry_search.set_text("");
         });
+
         current_station = new Label(_("Welcome!"));
         current_station.add_css_class("title-4");
 	current_station.wrap = true;
