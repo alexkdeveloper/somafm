@@ -14,7 +14,7 @@ private dynamic Element player;
 private ListBox list_box;
 private Adw.EntryRow entry_name;
 private Adw.EntryRow entry_url;
-private SearchEntry search_entry;
+private SearchEntry entry_search;
 private Button back_button;
 private Button add_button;
 private Button delete_button;
@@ -94,7 +94,7 @@ private int mode;
         var search_action = new GLib.SimpleAction ("search", null);
         search_action.activate.connect(()=>{
             search_box.show();
-            search_entry.grab_focus();
+            entry_search.grab_focus();
             });
         var open_directory_action = new GLib.SimpleAction ("open", null);
         open_directory_action.activate.connect (on_open_directory_clicked);
@@ -159,21 +159,21 @@ private int mode;
 
         scroll.set_child(clamp);
 
-        search_entry = new SearchEntry();
-        search_entry.hexpand = true;
-        search_entry.changed.connect(show_stations);
+        entry_search = new SearchEntry();
+        entry_search.hexpand = true;
+        entry_search.changed.connect(show_stations);
         var hide_button = new Button();
         hide_button.set_icon_name("window-close-symbolic");
         hide_button.add_css_class("flat");
         search_box = new Box(Orientation.HORIZONTAL,5);
         search_box.margin_start = 30;
         search_box.margin_end = 30;
-        search_box.append(search_entry);
+        search_box.append(entry_search);
         search_box.append(hide_button);
         search_box.hide();
         hide_button.clicked.connect(()=>{
            search_box.hide();
-           search_entry.set_text("");
+           entry_search.set_text("");
         });
         current_station = new Label(_("Welcome!"));
         current_station.add_css_class("title-4");
@@ -493,7 +493,7 @@ private void on_stop_record_clicked(){
             string? name = null;
             while ((name = dir.read_name ()) != null) {
                 if(search_box.is_visible()){
-                    if(name.contains(search_entry.get_text())){
+                    if(name.down().contains(entry_search.get_text().down())){
                        list.append(name);
                     }
                     }else{
