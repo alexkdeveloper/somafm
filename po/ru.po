@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2022-10-16 22:43+0800\n"
-"PO-Revision-Date: 2022-10-16 22:44+0800\n"
+"POT-Creation-Date: 2022-12-29 17:37+0800\n"
+"PO-Revision-Date: 2022-12-29 17:39+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ru_RU\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
-"X-Generator: Poedit 3.1.1\n"
+"X-Generator: Poedit 3.2.2\n"
 "X-Poedit-Basepath: ../src\n"
 "X-Poedit-SearchPath-0: MainWindow.vala\n"
 
@@ -47,91 +47,99 @@ msgstr "Записать"
 msgid "Stop recording"
 msgstr "Остановить запись"
 
-#: MainWindow.vala:110
+#: MainWindow.vala:116
+msgid "Search"
+msgstr "Поиск"
+
+#: MainWindow.vala:117
 msgid "Go to the website somafm.com"
 msgstr "Перейти на сайт somafm.com"
 
-#: MainWindow.vala:111
+#: MainWindow.vala:118
 msgid "Open the Records folder"
 msgstr "Открыть папку с записями"
 
-#: MainWindow.vala:112
+#: MainWindow.vala:119
 msgid "About Soma Radio"
 msgstr "О Программе"
 
-#: MainWindow.vala:113
+#: MainWindow.vala:120
 msgid "Quit"
 msgstr "Выйти"
 
-#: MainWindow.vala:149
+#: MainWindow.vala:178
 msgid "Welcome!"
 msgstr "Добро пожаловать!"
 
-#: MainWindow.vala:160
+#: MainWindow.vala:195
 msgid "Name"
 msgstr "Название"
 
-#: MainWindow.vala:176
+#: MainWindow.vala:204
+msgid "URL"
+msgstr ""
+
+#: MainWindow.vala:221
 msgid "OK"
 msgstr ""
 
-#: MainWindow.vala:206 MainWindow.vala:241
+#: MainWindow.vala:260 MainWindow.vala:292
 msgid "Please choose a station"
 msgstr "Пожалуйста, выберите станцию"
 
-#: MainWindow.vala:218
+#: MainWindow.vala:272
 msgid "Now playing: "
 msgstr "Сейчас играет: "
 
-#: MainWindow.vala:226
+#: MainWindow.vala:280
 msgid "Stopped"
 msgstr "Остановлено"
 
-#: MainWindow.vala:261
+#: MainWindow.vala:312
 msgid "Do you want to visit the website somafm.com?"
 msgstr "Перейти на сайт somafm.com?"
 
-#: MainWindow.vala:262 MainWindow.vala:409
+#: MainWindow.vala:313 MainWindow.vala:470
 msgid "_Cancel"
 msgstr ""
 
-#: MainWindow.vala:263 MainWindow.vala:410 MainWindow.vala:510
+#: MainWindow.vala:314 MainWindow.vala:471 MainWindow.vala:581
 msgid "_OK"
 msgstr ""
 
-#: MainWindow.vala:314 MainWindow.vala:404
+#: MainWindow.vala:357 MainWindow.vala:465
 msgid "Choose a station"
 msgstr "Выберите станцию"
 
-#: MainWindow.vala:332
+#: MainWindow.vala:375
 msgid "Enter the name"
 msgstr "Введите название"
 
-#: MainWindow.vala:337
+#: MainWindow.vala:380
 msgid "Enter the url"
 msgstr "Введите  url"
 
-#: MainWindow.vala:348
+#: MainWindow.vala:391
 msgid "Rename failed"
 msgstr "Не удалось переименовать"
 
-#: MainWindow.vala:358 MainWindow.vala:373
+#: MainWindow.vala:401 MainWindow.vala:417
 msgid "A station with the same name already exists"
 msgstr "Станция с таким названием уже существует"
 
-#: MainWindow.vala:383
+#: MainWindow.vala:427
 msgid "Add failed"
 msgstr "Не удалось добавить"
 
-#: MainWindow.vala:408
+#: MainWindow.vala:469
 msgid "Delete station "
 msgstr "Удалить станцию "
 
-#: MainWindow.vala:419
+#: MainWindow.vala:480
 msgid "Delete failed"
 msgstr "Не удалось удалить"
 
-#: MainWindow.vala:531
+#: MainWindow.vala:564
 msgid "translator-credits"
 msgstr "Alex Kryuchkov https://github.com/alexkdeveloper"
 
