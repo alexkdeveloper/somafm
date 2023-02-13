@@ -47,7 +47,7 @@ dependencies = [
     dependency ('gio-2.0'),
     dependency ('gtk4'),
     dependency ('libadwaita-1'),
-    dependency ('gstreamer-1.0'),
+    dependency ('gstreamer-player-1.0'),
     dependency('libpulse'),
     dependency('libpulse-mainloop-glib')
 ]

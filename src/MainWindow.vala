@@ -10,7 +10,7 @@ private Stack stack;
 private Box vbox_player_page;
 private Box vbox_edit_page;
 private Box search_box;
-private dynamic Element player;
+private Player player;
 private ListBox list_box;
 private Adw.EntryRow entry_name;
 private Adw.EntryRow entry_url;
@@ -24,11 +24,14 @@ private Button stop_button;
 private Button record_button;
 private Button stop_record_button;
 private Label current_station;
+private Label current_title;
 private Recorder recorder;
 private Adw.ToastOverlay overlay;
 private string directory_path;
 private string item;
 private int mode;
+
+private signal void title_changed (string title);
 
         public MainWindow(Adw.Application application) {
             GLib.Object(application: application,
@@ -191,9 +194,18 @@ private int mode;
         current_station.add_css_class("title-4");
 	current_station.wrap = true;
         current_station.wrap_mode = WORD;
+
+        current_title = new Label("");
+        current_title.margin_start = 10;
+        current_title.margin_end = 10;
+	current_title.wrap = true;
+        current_title.wrap_mode = WORD;
+        current_title.hide();
+
    vbox_player_page = new Box(Orientation.VERTICAL,5);
    vbox_player_page.append (search_box);
    vbox_player_page.append (current_station);
+   vbox_player_page.append (current_title);
    vbox_player_page.append (scroll);
    stack.add_child(vbox_player_page);
    var clear_name = new Button();
@@ -240,7 +252,17 @@ private int mode;
         vbox_edit_page.append(button_ok);
         stack.add_child(vbox_edit_page);
         stack.visible_child = vbox_player_page;
-        player = ElementFactory.make ("playbin", "play");
+        player = new Player(null, null);
+        player.media_info_updated.connect ((obj) => {
+            string? title = extract_title_from_stream (obj);
+            if (title != null) {
+                current_title.show();
+                current_title.set_text(title);
+                title_changed(title);
+            }else{
+                current_title.hide();
+            }
+        });
    directory_path = Environment.get_user_data_dir()+"/stations_for_soma_radio";
    GLib.File file = GLib.File.new_for_path(directory_path);
    if(!file.query_exists()){
@@ -280,7 +302,7 @@ private void on_entry_change(Adw.EntryRow entry, Gtk.Button clear){
        return;
    }
  player.uri = uri;
- player.set_state (State.PLAYING);
+ player.play();
  current_station.set_text(_("Now playing: ")+item);
  set_widget_visible(play_button,false);
  set_widget_visible(stop_button,true);
@@ -288,8 +310,10 @@ private void on_entry_change(Adw.EntryRow entry, Gtk.Button clear){
 }
 
 private void on_stop_station(){
- player.set_state (State.READY);
+ player.stop();
  current_station.set_text(_("Stopped"));
+ current_title.set_text("");
+ current_title.hide();
  set_widget_visible(play_button,true);
  set_widget_visible(stop_button,false);
  if(recorder.is_recording){
@@ -339,6 +363,20 @@ private void on_stop_record_clicked(){
    private void on_open_directory_clicked(){
       Gtk.show_uri(this, "file://"+Environment.get_user_data_dir(), Gdk.CURRENT_TIME);
   }  
+
+  private string? extract_title_from_stream (PlayerMediaInfo media_info) {
+        string? title = null;
+        var streamlist = media_info.get_stream_list ().copy ();
+        foreach (var stream in streamlist) {
+            var tags = stream.get_tags ();
+            tags.foreach ((list, tag) => {
+                if (tag == "title") {
+                    list.get_string(tag, out title);
+                }
+            });
+        }
+        return title;
+    }
 
    private void on_select_item () {
            var selection = list_box.get_selected_row();
@@ -568,7 +606,7 @@ private void on_stop_record_clicked(){
 	        var win = new Adw.AboutWindow () {
                 application_name = "Soma Radio",
                 application_icon = "com.github.alexkdeveloper.somafm",
-                version = "1.2.3",
+                version = "1.2.4",
                 copyright = "Copyright © 2021-2023 Alex Kryuchkov",
                 license_type = License.GPL_3_0,
                 developer_name = "Alex Kryuchkov",
