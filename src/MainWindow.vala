@@ -276,7 +276,7 @@ private signal void title_changed (string title);
             return false;
         });
         event_controller.key_released.connect ((keyval, keycode, state) => {
-              if (list_box.get_selected_row().is_selected() && stack.visible_child == vbox_player_page && (keyval == Gdk.Key.space || keyval == Gdk.Key.Return)) {
+              if (!search_box.is_visible() && stack.visible_child == vbox_player_page && (keyval == Gdk.Key.space || keyval == Gdk.Key.Return)) {
                 if(player.get_pipeline().current_state == State.PLAYING){
                     on_stop_station();
                 }else{
