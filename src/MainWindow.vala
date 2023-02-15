@@ -95,18 +95,7 @@ private signal void title_changed (string title);
         headerbar.pack_end(stop_button);
         headerbar.pack_end(play_button);
         var search_action = new GLib.SimpleAction ("search", null);
-        search_action.activate.connect(()=>{
-            if(search_box.is_visible()){
-                search_box.hide();
-                entry_search.set_text("");
-                if(item != null){
-                     list_box.select_row(list_box.get_row_at_index(get_index(item)));
-                  }
-            }else{
-                search_box.show();
-                entry_search.grab_focus();
-              }
-            });
+        search_action.activate.connect(on_search_clicked);
         var open_directory_action = new GLib.SimpleAction ("open", null);
         open_directory_action.activate.connect (on_open_directory_clicked);
         var go_to_website_action = new GLib.SimpleAction ("website", null);
@@ -276,6 +265,27 @@ private signal void title_changed (string title);
    show_stations();
    recorder = Recorder.get_default ();
    record_button.set_sensitive(false);
+   var event_controller = new Gtk.EventControllerKey ();
+        event_controller.key_pressed.connect ((keyval, keycode, state) => {
+            if (Gdk.ModifierType.CONTROL_MASK in state && keyval == Gdk.Key.q) {
+                app.quit();
+            }
+             if (Gdk.ModifierType.CONTROL_MASK in state && (keyval == Gdk.Key.f || keyval == Gdk.Key.s)) {
+                 on_search_clicked();
+            }
+            return false;
+        });
+        event_controller.key_released.connect ((keyval, keycode, state) => {
+              if (list_box.get_selected_row().is_selected() && stack.visible_child == vbox_player_page && (keyval == Gdk.Key.space || keyval == Gdk.Key.Return)) {
+                if(player.get_pipeline().current_state == State.PLAYING){
+                    on_stop_station();
+                }else{
+                    on_play_station();
+                }
+            }
+            return;
+        });
+        ((Gtk.Widget)this).add_controller(event_controller);
  }
 private void on_clear_entry(Adw.EntryRow entry){
     entry.set_text("");
@@ -363,6 +373,19 @@ private void on_stop_record_clicked(){
    private void on_open_directory_clicked(){
       Gtk.show_uri(this, "file://"+Environment.get_user_data_dir(), Gdk.CURRENT_TIME);
   }  
+
+  private void on_search_clicked(){
+       if(search_box.is_visible()){
+                search_box.hide();
+                entry_search.set_text("");
+                if(item != null){
+                     list_box.select_row(list_box.get_row_at_index(get_index(item)));
+                  }
+            }else{
+                search_box.show();
+                entry_search.grab_focus();
+              }
+  }
 
   private string? extract_title_from_stream (PlayerMediaInfo media_info) {
         string? title = null;
