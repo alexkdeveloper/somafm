@@ -27,10 +27,12 @@ private Label current_station;
 private Label current_title;
 private Recorder recorder;
 private Adw.ToastOverlay overlay;
+private PlayerState? current_state;
 private string directory_path;
 private string item;
 private int mode;
 
+private signal void state_changed (PlayerState state);
 private signal void title_changed (string title);
 
         public MainWindow(Adw.Application application) {
@@ -242,6 +244,10 @@ private signal void title_changed (string title);
         stack.add_child(vbox_edit_page);
         stack.visible_child = vbox_player_page;
         player = new Player(null, null);
+        player.state_changed.connect ((state) => {
+            current_state = state;
+            state_changed (state);
+        });
         player.media_info_updated.connect ((obj) => {
             string? title = extract_title_from_stream (obj);
             if (title != null) {
@@ -277,7 +283,7 @@ private signal void title_changed (string title);
         });
         event_controller.key_released.connect ((keyval, keycode, state) => {
               if (!search_box.is_visible() && stack.visible_child == vbox_player_page && (keyval == Gdk.Key.space || keyval == Gdk.Key.Return)) {
-                if(player.get_pipeline().current_state == State.PLAYING){
+                if(current_state == PlayerState.PLAYING || current_state == PlayerState.BUFFERING){
                     on_stop_station();
                 }else{
                     on_play_station();
