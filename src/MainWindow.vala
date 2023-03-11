@@ -28,6 +28,7 @@ private Label current_title;
 private Recorder recorder;
 private Adw.ToastOverlay overlay;
 private PlayerState? current_state;
+private string directory_path_for_recordings;
 private string directory_path;
 private string item;
 private int mode;
@@ -167,12 +168,6 @@ private signal void title_changed (string title);
         var hide_button = new Button();
         hide_button.set_icon_name("window-close-symbolic");
         hide_button.add_css_class("flat");
-        search_box = new Box(Orientation.HORIZONTAL,5);
-        search_box.margin_start = 30;
-        search_box.margin_end = 30;
-        search_box.append(entry_search);
-        search_box.append(hide_button);
-        search_box.hide();
         hide_button.clicked.connect(()=>{
            search_box.hide();
            entry_search.set_text("");
@@ -180,6 +175,13 @@ private signal void title_changed (string title);
                list_box.select_row(list_box.get_row_at_index(get_index(item)));
             }
         });
+
+        search_box = new Box(Orientation.HORIZONTAL,5);
+        search_box.margin_start = 30;
+        search_box.margin_end = 30;
+        search_box.append(entry_search);
+        search_box.append(hide_button);
+        search_box.hide();
 
         current_station = new Label(_("Welcome!"));
         current_station.add_css_class("title-4");
@@ -267,6 +269,15 @@ private signal void title_changed (string title);
         stderr.printf ("Error: %s\n", e.message);
      }
      create_default_stations();
+   }
+   directory_path_for_recordings = Environment.get_user_data_dir()+"/recordings";
+   GLib.File dir_for_rec = GLib.File.new_for_path(directory_path_for_recordings);
+   if(!dir_for_rec.query_exists()){
+     try{
+        dir_for_rec.make_directory();
+     }catch(Error e){
+        stderr.printf ("Error: %s\n", e.message);
+     }
    }
    show_stations();
    recorder = Recorder.get_default ();
@@ -377,7 +388,7 @@ private void on_stop_record_clicked(){
        }
    
    private void on_open_directory_clicked(){
-      Gtk.show_uri(this, "file://"+Environment.get_user_data_dir(), Gdk.CURRENT_TIME);
+      Gtk.show_uri(this, "file://"+directory_path_for_recordings, Gdk.CURRENT_TIME);
   }  
 
   private void on_search_clicked(){
@@ -621,9 +632,9 @@ private void on_stop_record_clicked(){
       }
 
    private void create_default_stations(){
-          string[] name_station = {"Groove Salad","Drone Zone","Deep Space One","Indie Pop Rocks!","Space Station Soma","Lush","Secret Agent","Underground 80s","Groove Salad Classic","Left Coast 70s","Folk Forward","Beat Blender","DEF CON Radio","Boot Liquor","Suburbs of Goa","BAGeL Radio","Synphaera Radio","The Trip","Sonic Universe","PopTron","Seven Inch Soul","Fluid","Dub Step Beyond","Illinois Street Lounge","ThistleRadio","Mission Control","Digitalis","Heavyweight Reggae","cliqhop idm","Metal Detector","Vaporwaves","SF 10-33","Covers","Black Rock FM","Doomed (Special)","n5MD Radio","SomaFM Live","SF Police Scanner"};
-          string[] url_station = {"http://ice4.somafm.com/groovesalad-256-mp3","http://ice2.somafm.com/dronezone-256-mp3","http://ice4.somafm.com/deepspaceone-128-mp3","http://ice2.somafm.com/indiepop-128-mp3","http://ice6.somafm.com/spacestation-128-mp3","http://ice6.somafm.com/lush-128-mp3","http://ice6.somafm.com/secretagent-128-mp3","http://ice6.somafm.com/u80s-256-mp3","http://ice2.somafm.com/gsclassic-128-mp3","http://ice2.somafm.com/seventies-320-mp3","http://ice4.somafm.com/folkfwd-128-mp3","http://ice2.somafm.com/beatblender-128-mp3","http://ice4.somafm.com/defcon-256-mp3","http://ice4.somafm.com/bootliquor-320-mp3","http://ice6.somafm.com/suburbsofgoa-128-mp3","http://ice6.somafm.com/bagel-128-mp3","http://ice6.somafm.com/synphaera-256-mp3","http://ice4.somafm.com/thetrip-128-mp3","http://ice6.somafm.com/sonicuniverse-256-mp3","http://ice2.somafm.com/poptron-128-mp3","http://ice6.somafm.com/7soul-128-mp3","http://ice2.somafm.com/fluid-128-mp3","http://ice4.somafm.com/dubstep-256-mp3","http://ice6.somafm.com/illstreet-128-mp3","http://ice6.somafm.com/thistle-128-mp3","http://ice6.somafm.com/missioncontrol-128-mp3","http://ice4.somafm.com/digitalis-128-mp3","http://ice4.somafm.com/reggae-256-mp3","http://ice4.somafm.com/cliqhop-256-mp3","http://ice6.somafm.com/metal-128-mp3","http://ice4.somafm.com/vaporwaves-128-mp3","http://ice6.somafm.com/sf1033-128-mp3","http://ice2.somafm.com/covers-128-mp3","http://ice2.somafm.com/brfm-128-mp3","http://ice6.somafm.com/specials-128-mp3","http://ice2.somafm.com/n5md-128-mp3","http://ice2.somafm.com/live-128-mp3","http://ice6.somafm.com/scanner-128-mp3"};
-          for(int i=0;i<38;i++){
+          string[] name_station = {"Groove Salad","Drone Zone","Deep Space One","Indie Pop Rocks!","Space Station Soma","Lush","Secret Agent","Underground 80s","Groove Salad Classic","Left Coast 70s","Folk Forward","Beat Blender","DEF CON Radio","Boot Liquor","Suburbs of Goa","Synphaera Radio","The Trip","Sonic Universe","PopTron","Seven Inch Soul","Fluid","Dub Step Beyond","Illinois Street Lounge","ThistleRadio","Mission Control","Digitalis","Heavyweight Reggae","cliqhop idm","Metal Detector","Vaporwaves","SF 10-33","Covers","Black Rock FM","n5MD Radio","SomaFM Live","SF Police Scanner","Christmas Lounge","Christmas Rocks!","Jolly Ol' Soul","SF in SF","SomaFM Specials","The Dark Zone","Xmas in Frisko"};
+          string[] url_station = {"https://ice4.somafm.com/groovesalad-256-mp3","https://ice2.somafm.com/dronezone-256-mp3","https://ice4.somafm.com/deepspaceone-128-mp3","https://ice2.somafm.com/indiepop-128-mp3","https://ice6.somafm.com/spacestation-128-mp3","https://ice6.somafm.com/lush-128-mp3","https://ice6.somafm.com/secretagent-128-mp3","https://ice6.somafm.com/u80s-256-mp3","https://ice2.somafm.com/gsclassic-128-mp3","https://ice2.somafm.com/seventies-320-mp3","https://ice4.somafm.com/folkfwd-128-mp3","https://ice2.somafm.com/beatblender-128-mp3","https://ice4.somafm.com/defcon-256-mp3","https://ice4.somafm.com/bootliquor-320-mp3","https://ice6.somafm.com/suburbsofgoa-128-mp3","https://ice6.somafm.com/synphaera-256-mp3","https://ice4.somafm.com/thetrip-128-mp3","https://ice6.somafm.com/sonicuniverse-256-mp3","https://ice2.somafm.com/poptron-128-mp3","https://ice6.somafm.com/7soul-128-mp3","https://ice2.somafm.com/fluid-128-mp3","https://ice4.somafm.com/dubstep-256-mp3","https://ice6.somafm.com/illstreet-128-mp3","https://ice6.somafm.com/thistle-128-mp3","https://ice6.somafm.com/missioncontrol-128-mp3","https://ice4.somafm.com/digitalis-128-mp3","https://ice4.somafm.com/reggae-256-mp3","https://ice4.somafm.com/cliqhop-256-mp3","https://ice6.somafm.com/metal-128-mp3","https://ice4.somafm.com/vaporwaves-128-mp3","https://ice6.somafm.com/sf1033-128-mp3","https://ice2.somafm.com/covers-128-mp3","https://ice2.somafm.com/brfm-128-mp3","https://ice2.somafm.com/n5md-128-mp3","https://ice2.somafm.com/live-128-mp3","https://ice6.somafm.com/scanner-128-mp3","https://ice5.somafm.com/christmas-256-mp3","https://ice6.somafm.com/xmasrocks-128-mp3","https://ice4.somafm.com/jollysoul-128-mp3","https://ice4.somafm.com/sfinsf-128-mp3","https://ice6.somafm.com/specials-128-mp3","https://ice4.somafm.com/darkzone-256-mp3","https://ice4.somafm.com/xmasinfrisko-128-mp3"};
+          for(int i=0;i<43;i++){
             try {
                  FileUtils.set_contents (directory_path+"/"+name_station[i], url_station[i]);
               } catch (Error e) {
@@ -635,7 +646,7 @@ private void on_stop_record_clicked(){
 	        var win = new Adw.AboutWindow () {
                 application_name = "Soma Radio",
                 application_icon = "com.github.alexkdeveloper.somafm",
-                version = "1.2.4",
+                version = "1.2.5",
                 copyright = "Copyright © 2021-2023 Alex Kryuchkov",
                 license_type = License.GPL_3_0,
                 developer_name = "Alex Kryuchkov",

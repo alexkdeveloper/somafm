@@ -22,7 +22,7 @@
     </screenshot>
   </screenshots>
   <description>
-    <p>A simple radio with a clear and concise interface. You can listen to your favorite stations, add new ones, edit existing ones and delete unnecessary ones. 38 stations from the site somafm.com already embedded in the application. You can record radio stations to an mp3 file.</p>
+    <p>A simple radio with a clear and concise interface. You can listen to your favorite stations, add new ones, edit existing ones and delete unnecessary ones. 43 stations from the site somafm.com already embedded in the application. You can record radio stations to an mp3 file.</p>
   </description>
   <categories>
     <category>GTK</category>
@@ -30,6 +30,13 @@
   </categories>
   <content_rating type="oars-1.1"/>
   <releases>
+  <release version="1.2.5" date="2023-03-11">
+    <description>
+      <ul>
+        <li>Station records are now saved in a separate subfolder</li>
+      </ul>
+    </description>
+    </release>
   <release version="1.2.4" date="2023-02-13">
     <description>
       <ul>

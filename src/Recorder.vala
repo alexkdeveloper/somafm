@@ -50,7 +50,7 @@ public class Recorder : Object {
         }
 
         string filename = station_name + "  " + date_time();
-        full_path = Environment.get_user_data_dir () + "/%s%s".printf (filename, ".mp3");
+        full_path = Environment.get_user_data_dir () + "/recordings/%s%s".printf (filename, ".mp3");
         sink.set ("location", full_path);
         debug ("The recording is temporary stored at %s", full_path);
 
