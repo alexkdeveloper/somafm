@@ -88,6 +88,7 @@ private signal void title_changed (string title);
         play_button.clicked.connect(on_play_station);
         stop_button.clicked.connect(on_stop_station);
         var headerbar = new Adw.HeaderBar();
+        headerbar.add_css_class("flat");
         headerbar.pack_start(back_button);
         headerbar.pack_start(add_button);
         headerbar.pack_start(delete_button);
@@ -646,7 +647,7 @@ private void on_stop_record_clicked(){
 	        var win = new Adw.AboutWindow () {
                 application_name = "Soma Radio",
                 application_icon = "com.github.alexkdeveloper.somafm",
-                version = "1.2.6",
+                version = "1.2.7",
                 copyright = "Copyright © 2021-2023 Alex Kryuchkov",
                 license_type = License.GPL_3_0,
                 developer_name = "Alex Kryuchkov",

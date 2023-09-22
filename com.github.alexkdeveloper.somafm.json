@@ -1,7 +1,7 @@
 {
   "app-id": "com.github.alexkdeveloper.somafm",
   "runtime": "org.gnome.Platform",
-  "runtime-version": "44",
+  "runtime-version": "45",
   "sdk": "org.gnome.Sdk",
   "command": "com.github.alexkdeveloper.somafm",
   "finish-args": [
@@ -30,8 +30,8 @@
         "buildsystem": "meson",
         "sources": [
             {
-                "type" : "git",
-                "url" : "https://github.com/alexkdeveloper/somafm.git"
+                "type" : "dir",
+                "path" : "."
             }
         ]
       }
