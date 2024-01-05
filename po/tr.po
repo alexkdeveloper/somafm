@@ -1,135 +1,189 @@
 # Turkish translation of com.github.alexkdeveloper.somafm.
 #
-# Copyright (C) 2022 com.github.alexkdeveloper.somafm's COPYRIGHT HOLDER
+# Copyright (C) 2022-2024 com.github.alexkdeveloper.somafm's COPYRIGHT HOLDER
 # This file is distributed under the same licence as the com.github.alexkdeveloper.somafm package.
 #
-# Sabri Ünal <libreajans@gmail.com>, 2022.
+# Sabri Ünal <libreajans@gmail.com>, 2022, 2024.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: com.github.alexkdeveloper.somafm\n"
-"Report-Msgid-Bugs-To: https://github.com/alexkdeveloper/somafm/issues\n"
-"POT-Creation-Date: 2022-08-10 19:01+0300\n"
-"PO-Revision-Date: 2022-08-10 19:03+0300\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-01-05 17:06+0300\n"
+"PO-Revision-Date: 2024-01-05 17:07+0300\n"
 "Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
-"Language-Team: Turkish <gnome-turk@gnome.org>\n"
+"Language-Team: Turkish <takim@gnome.org.tr>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.1.1\n"
+"X-Generator: Poedit 3.4.2\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-SearchPath-0: src\n"
 
-#: src/MainWindow.vala:68
+#: data/com.github.alexkdeveloper.somafm.desktop.in:4
+#: data/com.github.alexkdeveloper.somafm.appdata.xml.in:7
+msgid "Soma Radio"
+msgstr "Soma Radio"
+
+#: data/com.github.alexkdeveloper.somafm.desktop.in:5
+msgid "Simple Radio"
+msgstr "Basit Radyo"
+
+#: data/com.github.alexkdeveloper.somafm.desktop.in:10
+msgid "Radio;Audio;Music;Player;"
+msgstr "Radyo;Ses;Müzik;Çalar;Oynatıcı;"
+
+#: data/com.github.alexkdeveloper.somafm.appdata.xml.in:8
+msgid "A simple radio with built-in stations from the website somafm.com"
+msgstr "Somafm.com web sitesinden yerleşik istasyonlara sahip basit bir radyo"
+
+#: data/com.github.alexkdeveloper.somafm.appdata.xml.in:14
+msgid "Alex Kryuchkov"
+msgstr "Alex Kryuchkov"
+
+#: data/com.github.alexkdeveloper.somafm.appdata.xml.in:29
+msgid ""
+"A simple radio with a clear and concise interface. You can listen to your "
+"favorite stations, add new ones, edit existing ones and delete unnecessary "
+"ones. 43 stations from the site somafm.com already embedded in the "
+"application. You can record radio stations to an mp3 file."
+msgstr ""
+"Açık ve temiz arayüze sahip basit bir radyo. Gözde istasyonlarınızı "
+"dinleyebilir, yenilerini ekleyebilir, var olanları düzenleyebilir ve "
+"gereksiz olanları silebilirsiniz. somafm.com sitesinden 43 istasyon zaten "
+"uygulama içine gömülüdür. Radyo istasyonlarını mp3 dosyasına "
+"kaydedebilirsiniz."
+
+#: src/MainWindow.vala:74
 msgid "Back"
 msgstr "Geri"
 
-#: src/MainWindow.vala:69
+#: src/MainWindow.vala:75
 msgid "Add station"
-msgstr "İstasyon ekle"
+msgstr "İstasyon Ekle"
 
-#: src/MainWindow.vala:70
+#: src/MainWindow.vala:76
 msgid "Delete station"
-msgstr "İstasyonu sil"
+msgstr "İstasyonu Sil"
 
-#: src/MainWindow.vala:71
+#: src/MainWindow.vala:77
 msgid "Edit station"
-msgstr "İstasyonu düzenle"
+msgstr "İstasyonu Düzenle"
 
-#: src/MainWindow.vala:72
+#: src/MainWindow.vala:78
 msgid "Play"
 msgstr "Oynat"
 
-#: src/MainWindow.vala:73
+#: src/MainWindow.vala:79
 msgid "Stop"
 msgstr "Durdur"
 
-#: src/MainWindow.vala:74
+#: src/MainWindow.vala:80
 msgid "Start recording"
-msgstr "Kaydı başlat"
+msgstr "Kaydı Başlat"
 
-#: src/MainWindow.vala:75
+#: src/MainWindow.vala:81
 msgid "Stop recording"
-msgstr "Kaydı durdur"
+msgstr "Kaydı Durdur"
 
-#: src/MainWindow.vala:102
+#: src/MainWindow.vala:120
+msgid "Search"
+msgstr "Ara"
+
+#: src/MainWindow.vala:121
 msgid "Go to the website somafm.com"
-msgstr "somafm.com web sitesine git"
+msgstr "somafm.com Web Sitesine Git"
 
-#: src/MainWindow.vala:103
+#: src/MainWindow.vala:122
 msgid "Open the Records folder"
-msgstr "Kayıtlar klasörünü aç"
+msgstr "Kayıtlar Klasörünü Aç"
 
-#: src/MainWindow.vala:137
+#: src/MainWindow.vala:123
+msgid "About Soma Radio"
+msgstr "Soma Radio Hakkında"
+
+#: src/MainWindow.vala:124
+msgid "Quit"
+msgstr "Çık"
+
+#: src/MainWindow.vala:187
 msgid "Welcome!"
 msgstr "Hoş Geldiniz!"
 
-#: src/MainWindow.vala:148
+#: src/MainWindow.vala:213
 msgid "Name"
 msgstr "Ad"
 
-#: src/MainWindow.vala:194 src/MainWindow.vala:229
+#: src/MainWindow.vala:222
+msgid "URL"
+msgstr "URL"
+
+#: src/MainWindow.vala:239
+msgid "OK"
+msgstr "Tamam"
+
+#: src/MainWindow.vala:322 src/MainWindow.vala:356
 msgid "Please choose a station"
 msgstr "İstasyon seçiniz"
 
-#: src/MainWindow.vala:206
+#: src/MainWindow.vala:334
 msgid "Now playing: "
 msgstr "Oynatılıyor: "
 
-#: src/MainWindow.vala:214
+#: src/MainWindow.vala:342
 msgid "Stopped"
 msgstr "Durdurulmuş"
 
-#: src/MainWindow.vala:249
+#: src/MainWindow.vala:376
 msgid "Do you want to visit the website somafm.com?"
 msgstr "somafm.com web sitesini ziyaret etmek ister misiniz?"
 
-#: src/MainWindow.vala:250 src/MainWindow.vala:393
-msgid "Question"
-msgstr "Soru"
+#: src/MainWindow.vala:377 src/MainWindow.vala:561
+msgid "_Cancel"
+msgstr "İ_ptal"
 
-#: src/MainWindow.vala:298 src/MainWindow.vala:388
+#: src/MainWindow.vala:378 src/MainWindow.vala:562 src/MainWindow.vala:672
+msgid "_OK"
+msgstr "_Tamam"
+
+#: src/MainWindow.vala:448 src/MainWindow.vala:556
 msgid "Choose a station"
 msgstr "İstasyon seçiniz"
 
-#: src/MainWindow.vala:316
+#: src/MainWindow.vala:466
 msgid "Enter the name"
 msgstr "Adı giriniz"
 
-#: src/MainWindow.vala:321
+#: src/MainWindow.vala:471
 msgid "Enter the url"
 msgstr "URL giriniz"
 
-#: src/MainWindow.vala:332
+#: src/MainWindow.vala:482
 msgid "Rename failed"
 msgstr "Yeniden adlandırılamadı"
 
-#: src/MainWindow.vala:342 src/MainWindow.vala:357
+#: src/MainWindow.vala:492 src/MainWindow.vala:508
 msgid "A station with the same name already exists"
 msgstr "Aynı ada sahip bir istasyon zaten var"
 
-#: src/MainWindow.vala:367
+#: src/MainWindow.vala:518
 msgid "Add failed"
 msgstr "Eklenemedi"
 
-#: src/MainWindow.vala:392
+#: src/MainWindow.vala:560
 msgid "Delete station "
 msgstr "İstasyonu sil "
 
-#: src/MainWindow.vala:399
+#: src/MainWindow.vala:571
 msgid "Delete failed"
 msgstr "Silinemedi"
 
-#: src/MainWindow.vala:471
-msgid "Message"
-msgstr "İleti"
+#: src/MainWindow.vala:655
+msgid "translator-credits"
+msgstr "Sabri Ünal <libreajans@gmail.com>"
 
 #: src/Recorder.vala:147
 msgid "Recording is ongoing"
 msgstr "Kayıt devam ediyor"
-
-#: src/MainWindow.vala:531
-msgid "translator-credits"
-msgstr "Sabri Ünal <libreajans@gmail.com>"
