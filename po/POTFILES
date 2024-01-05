@@ -1,1 +1,4 @@
+data/com.github.alexkdeveloper.somafm.desktop.in
+data/com.github.alexkdeveloper.somafm.appdata.xml.in
 src/MainWindow.vala
+src/Recorder.vala
