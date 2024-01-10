@@ -30,6 +30,13 @@
   </description>
   <content_rating type="oars-1.1"/>
   <releases>
+  <release version="1.2.8" date="2024-01-10">
+   <description translatable="no">
+    <ul>
+     <li>Added Belarusian translation</li>
+    </ul>
+ </description>
+</release>
   <release version="1.2.7" date="2023-09-22">
    <description translatable="no">
     <ul>
