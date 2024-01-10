@@ -1,0 +1,183 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# YAHOR HAURYLENKA <k1llo2810@gmail.com>, 2024.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-01-05 17:06+0300\n"
+"PO-Revision-Date: 2024-01-09 17:15+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: be\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4\n"
+
+#: data/com.github.alexkdeveloper.somafm.desktop.in:4
+#: data/com.github.alexkdeveloper.somafm.appdata.xml.in:7
+msgid "Soma Radio"
+msgstr "Soma Radio"
+
+#: data/com.github.alexkdeveloper.somafm.desktop.in:5
+msgid "Simple Radio"
+msgstr "Простае радыё"
+
+#: data/com.github.alexkdeveloper.somafm.desktop.in:10
+msgid "Radio;Audio;Music;Player;"
+msgstr "Radio;Audio;Music;Player;Радыё;Аўдыё;Музыка;Плэер;"
+
+#: data/com.github.alexkdeveloper.somafm.appdata.xml.in:8
+msgid "A simple radio with built-in stations from the website somafm.com"
+msgstr "Простае радыё з убудаванымі станцыямі з сайта somafm.com"
+
+#: data/com.github.alexkdeveloper.somafm.appdata.xml.in:14
+msgid "Alex Kryuchkov"
+msgstr "Alex Kryuchkov"
+
+#: data/com.github.alexkdeveloper.somafm.appdata.xml.in:29
+msgid ""
+"A simple radio with a clear and concise interface. You can listen to your "
+"favorite stations, add new ones, edit existing ones and delete unnecessary "
+"ones. 43 stations from the site somafm.com already embedded in the "
+"application. You can record radio stations to an mp3 file."
+msgstr ""
+"Простае радыё з ясным і лаканічным інтэрфейсам. Вы можаце слухаць любімыя "
+"станцыі, дадаваць новыя, рэдагаваць існуючыя і выдаляць непатрэбныя. 43 "
+"станцыі з сайта somafm.com ужо ўбудаваныя ў праграму. Вы можаце запісаць "
+"перадачы ў файл mp3."
+
+#: src/MainWindow.vala:74
+msgid "Back"
+msgstr "Назад"
+
+#: src/MainWindow.vala:75
+msgid "Add station"
+msgstr "Дадаць станцыю"
+
+#: src/MainWindow.vala:76
+msgid "Delete station"
+msgstr "Выдаліць станцыю"
+
+#: src/MainWindow.vala:77
+msgid "Edit station"
+msgstr "Рэдагаваць станцыю"
+
+#: src/MainWindow.vala:78
+msgid "Play"
+msgstr "Прайграць"
+
+#: src/MainWindow.vala:79
+msgid "Stop"
+msgstr "Паўза"
+
+#: src/MainWindow.vala:80
+msgid "Start recording"
+msgstr "Пачаць запіс"
+
+#: src/MainWindow.vala:81
+msgid "Stop recording"
+msgstr "Спыніць запіс"
+
+#: src/MainWindow.vala:120
+msgid "Search"
+msgstr "Пошук"
+
+#: src/MainWindow.vala:121
+msgid "Go to the website somafm.com"
+msgstr "Перайсці на сайт somafm.com"
+
+#: src/MainWindow.vala:122
+msgid "Open the Records folder"
+msgstr "Адкрыць папку з запісамі"
+
+#: src/MainWindow.vala:123
+msgid "About Soma Radio"
+msgstr "Аб праграме"
+
+#: src/MainWindow.vala:124
+msgid "Quit"
+msgstr "Выйсці"
+
+#: src/MainWindow.vala:187
+msgid "Welcome!"
+msgstr "Вітаем!"
+
+#: src/MainWindow.vala:213
+msgid "Name"
+msgstr "Назва"
+
+#: src/MainWindow.vala:222
+msgid "URL"
+msgstr "URL"
+
+#: src/MainWindow.vala:239
+msgid "OK"
+msgstr "ОК"
+
+#: src/MainWindow.vala:322 src/MainWindow.vala:356
+msgid "Please choose a station"
+msgstr "Калі ласка, абярыце станцыю"
+
+#: src/MainWindow.vala:334
+msgid "Now playing: "
+msgstr "Зараз прайграваецца: "
+
+#: src/MainWindow.vala:342
+msgid "Stopped"
+msgstr "Спынена"
+
+#: src/MainWindow.vala:376
+msgid "Do you want to visit the website somafm.com?"
+msgstr "Вы хочаце наведаць сайт somafm.com?"
+
+#: src/MainWindow.vala:377 src/MainWindow.vala:561
+msgid "_Cancel"
+msgstr "_Скасаваць"
+
+#: src/MainWindow.vala:378 src/MainWindow.vala:562 src/MainWindow.vala:672
+msgid "_OK"
+msgstr "_ОК"
+
+#: src/MainWindow.vala:448 src/MainWindow.vala:556
+msgid "Choose a station"
+msgstr "Выберыце станцыю"
+
+#: src/MainWindow.vala:466
+msgid "Enter the name"
+msgstr "Увядзіце назву"
+
+#: src/MainWindow.vala:471
+msgid "Enter the url"
+msgstr "Увядзіце url"
+
+#: src/MainWindow.vala:482
+msgid "Rename failed"
+msgstr "Не ўдалося перайменаваць"
+
+#: src/MainWindow.vala:492 src/MainWindow.vala:508
+msgid "A station with the same name already exists"
+msgstr "Станцыя з такой назвай ужо існуе"
+
+#: src/MainWindow.vala:518
+msgid "Add failed"
+msgstr "Не ўдалося дадаць"
+
+#: src/MainWindow.vala:560
+msgid "Delete station "
+msgstr "Выдаліць станцыю "
+
+#: src/MainWindow.vala:571
+msgid "Delete failed"
+msgstr "Не ўдалося выдаліць"
+
+#: src/MainWindow.vala:655
+msgid "translator-credits"
+msgstr "Yahor Haurylenka <k1llo2810@gmail.com> 2024"
+
+#: src/Recorder.vala:147
+msgid "Recording is ongoing"
+msgstr "Ідзе запіс"
