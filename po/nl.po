@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: com.github.alexkdeveloper.somafm\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-15 11:36+0100\n"
-"PO-Revision-Date: 2022-12-15 11:37+0100\n"
+"POT-Creation-Date: 2024-01-05 17:06+0300\n"
+"PO-Revision-Date: 2024-03-26 11:54+0100\n"
 "Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
 "Language-Team: Dutch <kde-i18n-nl@kde.org>\n"
 "Language: nl\n"
@@ -17,129 +17,172 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.2.2\n"
 
-#: src/MainWindow.vala:66
+#: data/com.github.alexkdeveloper.somafm.desktop.in:4
+#: data/com.github.alexkdeveloper.somafm.appdata.xml.in:7
+msgid "Soma Radio"
+msgstr "Soma Radio"
+
+#: data/com.github.alexkdeveloper.somafm.desktop.in:5
+msgid "Simple Radio"
+msgstr "Eenvoudige radiotoepassing"
+
+#: data/com.github.alexkdeveloper.somafm.desktop.in:10
+msgid "Radio;Audio;Music;Player;"
+msgstr "Radio;Audio;Muziek;Speler;"
+
+#: data/com.github.alexkdeveloper.somafm.appdata.xml.in:8
+msgid "A simple radio with built-in stations from the website somafm.com"
+msgstr ""
+"Een eenvoudige radiotoepassing met meegeleverde stations, afkomstig van "
+"somafm.com"
+
+#: data/com.github.alexkdeveloper.somafm.appdata.xml.in:14
+msgid "Alex Kryuchkov"
+msgstr "Alex Kryuchkov"
+
+#: data/com.github.alexkdeveloper.somafm.appdata.xml.in:29
+msgid ""
+"A simple radio with a clear and concise interface. You can listen to your "
+"favorite stations, add new ones, edit existing ones and delete unnecessary "
+"ones. 43 stations from the site somafm.com already embedded in the "
+"application. You can record radio stations to an mp3 file."
+msgstr ""
+"Een eenvoudige radiotoepassing met een heldere vormgeving. De toepassing "
+"wordt geleverd met 43 stations, afkomstig van somafm.com. Luister naar uw "
+"favoriete radiostations, voeg nieuwe toe, bewerk bestaande of verwijder "
+"onnodige. Ook kunt u opnames maken naar een mp3-bestand."
+
+#: src/MainWindow.vala:74
 msgid "Back"
 msgstr "Terug"
 
-#: src/MainWindow.vala:67
+#: src/MainWindow.vala:75
 msgid "Add station"
 msgstr "Radiostation toevoegen"
 
-#: src/MainWindow.vala:68
+#: src/MainWindow.vala:76
 msgid "Delete station"
 msgstr "Radiostation verwijderen"
 
-#: src/MainWindow.vala:69
+#: src/MainWindow.vala:77
 msgid "Edit station"
 msgstr "Radiostation bewerken"
 
-#: src/MainWindow.vala:70
+#: src/MainWindow.vala:78
 msgid "Play"
 msgstr "Beluisteren"
 
-#: src/MainWindow.vala:71
+#: src/MainWindow.vala:79
 msgid "Stop"
 msgstr "Stoppen"
 
-#: src/MainWindow.vala:72
+#: src/MainWindow.vala:80
 msgid "Start recording"
 msgstr "Opname starten"
 
-#: src/MainWindow.vala:73
+#: src/MainWindow.vala:81
 msgid "Stop recording"
 msgstr "Opname stoppen"
 
-#: src/MainWindow.vala:108
+#: src/MainWindow.vala:120
+msgid "Search"
+msgstr "Zoeken"
+
+#: src/MainWindow.vala:121
 msgid "Go to the website somafm.com"
 msgstr "Open de website ‘somafm.com’"
 
-#: src/MainWindow.vala:109
+#: src/MainWindow.vala:122
 msgid "Open the Records folder"
 msgstr "Opnamemap openen"
 
-#: src/MainWindow.vala:110
+#: src/MainWindow.vala:123
 msgid "About Soma Radio"
 msgstr "Over Soma Radio"
 
-#: src/MainWindow.vala:111
+#: src/MainWindow.vala:124
 msgid "Quit"
 msgstr "Afsluiten"
 
-#: src/MainWindow.vala:149
+#: src/MainWindow.vala:187
 msgid "Welcome!"
 msgstr "Welkom!"
 
-#: src/MainWindow.vala:163
+#: src/MainWindow.vala:213
 msgid "Name"
 msgstr "Naam"
 
-#: src/MainWindow.vala:172
+#: src/MainWindow.vala:222
 msgid "URL"
 msgstr "Url"
 
-#: src/MainWindow.vala:189
+#: src/MainWindow.vala:239
 msgid "OK"
 msgstr "Oké"
 
-#: src/MainWindow.vala:228 src/MainWindow.vala:260
+#: src/MainWindow.vala:322 src/MainWindow.vala:356
 msgid "Please choose a station"
 msgstr "Kies een radiostation"
 
-#: src/MainWindow.vala:240
+#: src/MainWindow.vala:334
 msgid "Now playing: "
 msgstr "U luistert naar "
 
-#: src/MainWindow.vala:248
+#: src/MainWindow.vala:342
 msgid "Stopped"
 msgstr "Gestopt"
 
-#: src/MainWindow.vala:280
+#: src/MainWindow.vala:376
 msgid "Do you want to visit the website somafm.com?"
 msgstr "Wilt u de website ‘somafm.com’ openen?"
 
-#: src/MainWindow.vala:281 src/MainWindow.vala:417
+#: src/MainWindow.vala:377 src/MainWindow.vala:561
 msgid "_Cancel"
 msgstr "_Annuleren"
 
-#: src/MainWindow.vala:282 src/MainWindow.vala:418 src/MainWindow.vala:522
+#: src/MainWindow.vala:378 src/MainWindow.vala:562 src/MainWindow.vala:672
 msgid "_OK"
 msgstr "_Oké"
 
-#: src/MainWindow.vala:325 src/MainWindow.vala:412
+#: src/MainWindow.vala:448 src/MainWindow.vala:556
 msgid "Choose a station"
 msgstr "Kies een radiostation"
 
-#: src/MainWindow.vala:343
+#: src/MainWindow.vala:466
 msgid "Enter the name"
 msgstr "Voer een naam in"
 
-#: src/MainWindow.vala:348
+#: src/MainWindow.vala:471
 msgid "Enter the url"
 msgstr "Voer de url in"
 
-#: src/MainWindow.vala:359
+#: src/MainWindow.vala:482
 msgid "Rename failed"
 msgstr "De naam kan niet worden gewijzigd"
 
-#: src/MainWindow.vala:369 src/MainWindow.vala:384
+#: src/MainWindow.vala:492 src/MainWindow.vala:508
 msgid "A station with the same name already exists"
 msgstr "Er is al een radiostation met deze naam"
 
-#: src/MainWindow.vala:394
+#: src/MainWindow.vala:518
 msgid "Add failed"
 msgstr "Het radiostation kan niet worden toegevoegd"
 
-#: src/MainWindow.vala:416
+#: src/MainWindow.vala:560
 msgid "Delete station "
 msgstr "Radiostation verwijderen "
 
-#: src/MainWindow.vala:427
+#: src/MainWindow.vala:571
 msgid "Delete failed"
 msgstr "Het verwijderen is mislukt"
 
-#: src/MainWindow.vala:531
+#: src/MainWindow.vala:655
 msgid "translator-credits"
 msgstr "Heimen Stoffels <vistausss@fastmail.com>"
+
+#: src/Recorder.vala:147
+msgid "Recording is ongoing"
+msgstr "Er wordt een opname gemaakt"
 
 #~ msgid "Question"
 #~ msgstr "Vraag"
