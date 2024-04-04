@@ -12,6 +12,9 @@
   <translation type="gettext">com.github.alexkdeveloper.somafm</translation>
   <launchable type="desktop-id">com.github.alexkdeveloper.somafm.desktop</launchable>
   <developer_name>Alex Kryuchkov</developer_name>
+  <developer id="io.github.alexkdeveloper">
+    <name>Alex Kryuchkov</name>
+  </developer>
   <url type="homepage">https://github.com/alexkdeveloper/somafm</url>
   <url type="bugtracker">https://github.com/alexkdeveloper/somafm/issues</url>
   <url type="vcs-browser">https://github.com/alexkdeveloper/somafm</url>
