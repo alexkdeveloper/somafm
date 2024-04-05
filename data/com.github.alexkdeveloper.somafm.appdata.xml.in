@@ -12,6 +12,9 @@
   <translation type="gettext">com.github.alexkdeveloper.somafm</translation>
   <launchable type="desktop-id">com.github.alexkdeveloper.somafm.desktop</launchable>
   <developer_name>Alex Kryuchkov</developer_name>
+  <developer id="io.github.alexkdeveloper">
+    <name>Alex Kryuchkov</name>
+  </developer>
   <url type="homepage">https://github.com/alexkdeveloper/somafm</url>
   <url type="bugtracker">https://github.com/alexkdeveloper/somafm/issues</url>
   <url type="vcs-browser">https://github.com/alexkdeveloper/somafm</url>
@@ -31,70 +34,70 @@
   <content_rating type="oars-1.1"/>
   <releases>
   <release version="1.2.10" date="2024-03-29">
-   <description translatable="no">
+   <description translate="no">
     <ul>
      <li>Updated Dutch translation</li>
     </ul>
  </description>
 </release>
   <release version="1.2.9" date="2024-03-26">
-   <description translatable="no">
+   <description translate="no">
     <ul>
      <li>Updated to GNOME Platform version 46</li>
     </ul>
  </description>
 </release>
   <release version="1.2.8" date="2024-01-10">
-   <description translatable="no">
+   <description translate="no">
     <ul>
      <li>Added Belarusian translation</li>
     </ul>
  </description>
 </release>
   <release version="1.2.7" date="2023-09-22">
-   <description translatable="no">
+   <description translate="no">
     <ul>
      <li>Updated to GNOME Platform version 45</li>
     </ul>
  </description>
 </release>
   <release version="1.2.6" date="2023-03-22">
-   <description translatable="no">
+   <description translate="no">
     <ul>
      <li>Updated to GNOME Platform version 44</li>
     </ul>
  </description>
 </release>
   <release version="1.2.5" date="2023-03-11">
-    <description translatable="no">
+    <description translate="no">
       <ul>
         <li>Station records are now saved in a separate subfolder</li>
       </ul>
     </description>
     </release>
   <release version="1.2.4" date="2023-02-13">
-    <description translatable="no">
+    <description translate="no">
       <ul>
         <li>Added display of broadcast titles</li>
       </ul>
     </description>
     </release>
   <release version="1.2.3" date="2022-12-30">
-   <description translatable="no">
+   <description translate="no">
     <ul>
      <li>Added the function of searching stations in the list</li>
     </ul>
  </description>
 </release>
    <release version="1.2.2" date="2022-12-21">
-   <description translatable="no">
+   <description translate="no">
     <ul>
      <li>Improved operation of the station list</li>
     </ul>
  </description>
 </release>
   <release version="1.2.1" date="2022-12-15">
-   <description translatable="no">
+   <description translate="no">
     <ul>
      <li>Port to AdwActionRow and AdwEntryRow</li>
      <li>Updated Dutch translation</li>
@@ -102,98 +105,98 @@
  </description>
 </release>
    <release version="1.2.0" date="2022-10-17">
-   <description translatable="no">
+   <description translate="no">
     <ul>
      <li>Added AdwAboutWindow</li>
     </ul>
  </description>
 </release>
    <release version="1.1.10" date="2022-09-26">
-   <description translatable="no">
+   <description translate="no">
     <ul>
      <li>Port to AdwMessageDialog</li>
     </ul>
  </description>
 </release>
   <release version="1.1.9" date="2022-09-24">
-   <description translatable="no">
+   <description translate="no">
     <ul>
      <li>Update to GNOME Platform version 43</li>
     </ul>
  </description>
 </release>
   <release version="1.1.8" date="2022-08-11">
-   <description translatable="no">
+   <description translate="no">
     <ul>
      <li>Added Turkish translation</li>
     </ul>
  </description>
 </release>
   <release version="1.1.7" date="2022-06-29">
-   <description translatable="no">
+   <description translate="no">
     <ul>
      <li>Pop-up messages were introduced</li>
     </ul>
  </description>
 </release>
   <release version="1.1.6" date="2022-06-08">
-   <description translatable="no">
+   <description translate="no">
     <ul>
      <li>Libadwaita is included in the application</li>
     </ul>
  </description>
 </release>
   <release version="1.1.5" date="2022-05-29">
-   <description translatable="no">
+   <description translate="no">
     <ul>
      <li>Minor UI update</li>
     </ul>
  </description>
 </release>
   <release version="1.1.4" date="2022-05-16">
-   <description translatable="no">
+   <description translate="no">
     <ul>
      <li>Added Dutch translation</li>
     </ul>
  </description>
 </release>
   <release version="1.1.3" date="2022-04-30">
-   <description translatable="no">
+   <description translate="no">
     <ul>
      <li>Added Czech translation</li>
     </ul>
  </description>
 </release>
   <release version="1.1.2" date="2022-04-19">
-   <description translatable="no">
+   <description translate="no">
     <ul>
      <li>Port to GTK4</li>
     </ul>
  </description>
 </release>
   <release version="1.1.1" date="2022-04-06">
-   <description translatable="no">
+   <description translate="no">
     <ul>
      <li>Added Russian translation</li>
     </ul>
  </description>
 </release>
   <release version="1.1.0" date="2022-03-12">
-   <description translatable="no">
+   <description translate="no">
     <ul>
      <li>Added the ability to record stations in an mp3 file.</li>
     </ul>
  </description>
 </release>
   <release version="1.0.1" date="2021-12-20">
-   <description translatable="no">
+   <description translate="no">
     <ul>
      <li>Added automatic focus setting for input fields after clearing them.</li>
     </ul>
  </description>
 </release>
     <release version="1.0.0" date="2021-10-07">
-    <description translatable="no">
+    <description translate="no">
       <ul>
         <li>Initial release</li>
       </ul>
